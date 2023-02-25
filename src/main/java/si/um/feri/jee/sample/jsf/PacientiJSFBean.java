@@ -25,7 +25,6 @@ public class PacientiJSFBean implements Serializable {
     }
 
     public String savePacient() throws Exception {
-        log.info("save se klice");
         Pacient newPacient = new Pacient();
         newPacient.setIme(selectedPacient.getIme());
         newPacient.setPriimek(selectedPacient.getPriimek());
@@ -34,6 +33,7 @@ public class PacientiJSFBean implements Serializable {
         newPacient.setPosebnosti(selectedPacient.getPosebnosti());
         dao.save(newPacient);
         log.info("New patient saved: " + newPacient);
+        selectedPacient = new Pacient();
         return "all";
     }
 

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html
-        xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
     <meta charset="UTF-8"/>
@@ -9,27 +7,46 @@
 </h:head>
 
 <h:body>
-<f:view>
-<h:form>
-    Zdravniki:
-    [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejZdravnike.xhtml">All</a> |
-    <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Add new </a>]
-    Pacienti:
-    [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejPaciente.xhtml">All</a> |
-    <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Add new </a>]
-    <hr />
+    <f:view>
+        <h:form>
+            Zdravniki:
+            [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejZdravnike.xhtml">All</a> |
+            <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Add new </a>]
+            Pacienti:
+            [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejPaciente.xhtml">All</a> |
+            <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Add new </a>]
+            <hr />
 
-    <h:dataTable value="#{zdravnik.allZdravniki}" var="o">
-        <h:column>
-            <h:link value="#{o.email}" outcome="detailsZdravnik">
-                <f:param name="email" value="#{o.email}"></f:param>
-            </h:link>
-        </h:column>
-        <h:column>#{o.priimek}</h:column>
-        <h:column>#{o.ime}</h:column>
-    </h:dataTable>
-</h:form>
-</f:view>
+            <h:dataTable value="#{zdravnik.allZdravniki}" var="o">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Email"/>
+                    </f:facet>
+                    <h:link value="#{o.email}" outcome="detailsZdravnik">
+                        <f:param name="email" value="#{o.email}"></f:param>
+                    </h:link>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Priimek"/>
+                    </f:facet>
+                    #{o.priimek}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Ime"/>
+                    </f:facet>
+                    #{o.ime}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Kvota"/>
+                    </f:facet>
+                    #{o.kvota}
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </f:view>
 </h:body>
 
 </html>

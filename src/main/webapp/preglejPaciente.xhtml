@@ -21,14 +21,27 @@
 
             <h:dataTable value="#{pacient.allPacienti}" var="o">
                 <h:column>
+                    <f:facet name="header">Email</f:facet>
                     <h:link value="#{o.email}" outcome="detailsPacient">
                         <f:param name="email" value="#{o.email}"></f:param>
                     </h:link>
                 </h:column>
-                <h:column>#{o.priimek}</h:column>
-                <h:column>#{o.ime}</h:column>
-                <h:column>#{o.rojstniDatum}</h:column>
-                <h:column>#{o.posebnosti}</h:column>
+                <h:column>
+                    <f:facet name="header">Priimek</f:facet>
+                    #{o.priimek}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ime</f:facet>
+                    #{o.ime}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Rojstni datum</f:facet>
+                    #{o.rojstniDatum}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Posebnosti</f:facet>
+                    #{o.posebnosti}
+                </h:column>
             </h:dataTable>
         </h:form>
     </f:view>

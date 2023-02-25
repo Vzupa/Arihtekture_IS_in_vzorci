@@ -32,6 +32,7 @@ public class ZdravnikiJSFBean implements Serializable {
         newZdravnik.setEmail(selectedZdravnik.getEmail());
         newZdravnik.setKvota(selectedZdravnik.getKvota());
         dao.save(newZdravnik);
+        selectedZdravnik = new Zdravnik();
         return "all";
     }
 
