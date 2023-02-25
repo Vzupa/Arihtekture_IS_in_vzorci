@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class PacientMemoryDao implements pacientDao{
+public class PacientMemoryDao implements PacientDao {
 
     Logger log= Logger.getLogger(PacientMemoryDao.class.toString());
 

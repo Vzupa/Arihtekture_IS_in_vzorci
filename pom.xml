@@ -24,7 +24,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>sampleProject</finalName>
+		<finalName>AIV</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
