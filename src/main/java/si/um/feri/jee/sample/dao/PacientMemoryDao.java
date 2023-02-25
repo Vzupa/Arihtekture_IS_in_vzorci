@@ -1,0 +1,41 @@
+package si.um.feri.jee.sample.dao;
+
+
+import si.um.feri.jee.sample.vao.Pacient;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.logging.Logger;
+
+public class PacientMemoryDao implements pacientDao{
+
+    Logger log= Logger.getLogger(PacientMemoryDao.class.toString());
+
+    private List<Pacient> pacienti= Collections.synchronizedList(new ArrayList<Pacient>());
+
+    @Override
+    public List<Pacient> getAll() {
+        log.info("DAO pacienti: get all");
+        return pacienti;
+    }
+
+    @Override
+    public Pacient find(String email)  {
+        log.info("DAO pacienti: finding "+email);
+        for (Pacient o : pacienti)
+            if (o.getEmail().equals(email))
+                return o;
+        return null;
+    }
+
+    @Override
+    public void save(Pacient o)  {
+        log.info("DAO: saving "+o);
+//        if(find(o.getEmail())!=null) {
+//            log.info("DAO: editing "+o);
+//            delete(o.getEmail());
+//        }
+        pacienti.add(o);
+    }
+}

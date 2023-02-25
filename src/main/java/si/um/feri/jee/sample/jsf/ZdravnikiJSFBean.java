@@ -1,0 +1,50 @@
+package si.um.feri.jee.sample.jsf;
+
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import si.um.feri.jee.sample.dao.ZdravnikDao;
+import si.um.feri.jee.sample.dao.ZdravnikMemoryDao;
+import si.um.feri.jee.sample.vao.Zdravnik;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.logging.Logger;
+
+@Named("zdravnik")
+@SessionScoped
+public class ZdravnikiJSFBean implements Serializable {
+
+    Logger log = Logger.getLogger(ZdravnikiJSFBean.class.toString());
+
+    private ZdravnikDao dao = new ZdravnikMemoryDao();
+    private Zdravnik selectedZdravnik = new Zdravnik();
+    private String izbranEmail;
+
+    public List<Zdravnik> getAllZdravniki() throws Exception {
+        return dao.getAll();
+    }
+
+    public String saveZdravnik() throws Exception {
+        Zdravnik newZdravnik = new Zdravnik();
+        newZdravnik.setIme(selectedZdravnik.getIme());
+        newZdravnik.setPriimek(selectedZdravnik.getPriimek());
+        newZdravnik.setEmail(selectedZdravnik.getEmail());
+        newZdravnik.setKvota(selectedZdravnik.getKvota());
+        dao.save(newZdravnik);
+        return "all";
+    }
+
+    public Zdravnik getNewZdravnik() {
+        return selectedZdravnik;
+    }
+
+    public Zdravnik getSelectedZdravnik(){
+        return selectedZdravnik;
+    }
+
+    public void getSelectedZdravnik(Zdravnik selectedZdravnik){
+        this.selectedZdravnik = selectedZdravnik;
+    }
+
+}

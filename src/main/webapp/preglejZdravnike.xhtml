@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Vsi zdravniki</title>
+</h:head>
+
+<h:body>
+<f:view>
+<h:form>
+    [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejZdravnike.xhtml">All</a> |
+    <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Add new </a>]
+    <hr />
+
+    <h:dataTable value="#{zdravnik.allZdravniki}" var="o">
+        <h:column>
+            <h:link value="#{o.email}" outcome="details">
+                <f:param name="email" value="#{o.email}"></f:param>
+            </h:link>
+        </h:column>
+        <h:column>#{o.priimek}</h:column>
+        <h:column>#{o.ime}</h:column>
+    </h:dataTable>
+</h:form>
+</f:view>
+</h:body>
+
+</html>

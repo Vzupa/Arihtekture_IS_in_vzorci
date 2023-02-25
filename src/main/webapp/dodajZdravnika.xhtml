@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<h:head>
+		<meta charset="UTF-8" />
+		<title>Dodajanje zdravnikov</title>
+	</h:head>
+	
+	<h:body>
+		[<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejZdravnike.xhtml">All</a> |
+		<a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Add new </a>]
+		<hr />
+		<h1>Dodaj zdravnika</h1>
+		
+		<h:form>
+			<table>
+				<tr>
+					<td>Ime:</td>
+					<td><h:inputText value="#{zdravnik.selectedZdravnik.ime}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>Priimek:</td>
+					<td><h:inputText value="#{zdravnik.selectedZdravnik.priimek}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><h:inputText value="#{zdravnik.selectedZdravnik.email}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>Kvota:</td>
+					<td><h:inputText value="#{zdravnik.selectedZdravnik.kvota}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<h:commandButton value="Dodaj" action="#{zdravnik.saveZdravnik}" />
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+	</h:body>
+	
+</html>
