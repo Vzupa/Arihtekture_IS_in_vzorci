@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 <h:head>
     <meta charset="UTF-8" />
-    <title>Pregled pacienta</title>
+    <title>Pregled zdravnika</title>
 </h:head>
-
 <h:body>
     <f:view>
 
@@ -21,11 +20,16 @@
             <f:viewParam name="email" value="#{pacient.izbranEmail}" />
         </f:metadata>
 
-        Ime: <b>#{pacient.selectedPacient.ime}</b><br/>
-        Priimek: <b>#{pacient.selectedPacient.priimek}</b><br/>
-        Email: <b>#{pacient.selectedPacient.email}</b><br/>
-        rojsniDatum: <b>#{pacient.selectedPacient.rojstniDatum}</b><br/>
-        posebnosti: <b>#{pacient.selectedPacient.posebnosti}</b><br/>
+        Ime: <b>#{zdravnik.selectedZdravnik.ime}</b><br/>
+        Priimek: <b>#{zdravnik.selectedZdravnik.priimek}</b><br/>
+        Email: <b>#{zdravnik.selectedZdravnik.email}</b><br/>
+        kvota: <b>#{zdravnik.selectedZdravnik.kvota}</b><br/>
+        pacienti:
+        <ul>
+            <c:forEach var="pacient" items="#{zdravnik.selectedZdravnik.pacienti}">
+                <li>#{pacient}</li>
+            </c:forEach>
+        </ul>
 
     </f:view>
 </h:body>

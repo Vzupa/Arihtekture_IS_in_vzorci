@@ -21,7 +21,7 @@
 
     <h:dataTable value="#{zdravnik.allZdravniki}" var="o">
         <h:column>
-            <h:link value="#{o.email}" outcome="details">
+            <h:link value="#{o.email}" outcome="detailsZdravnik">
                 <f:param name="email" value="#{o.email}"></f:param>
             </h:link>
         </h:column>

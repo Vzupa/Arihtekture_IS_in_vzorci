@@ -48,4 +48,15 @@ public class PacientiJSFBean implements Serializable {
     public void getSelectedPacient(Pacient selectedPacient){
         this.selectedPacient = selectedPacient;
     }
+
+    public void setIzbranEmail(String email) throws Exception{
+        izbranEmail = email;
+        selectedPacient = dao.find(izbranEmail);
+        if(selectedPacient == null)
+            selectedPacient = new Pacient();
+    }
+
+    public String getIzbranEmail(){
+        return izbranEmail;
+    }
 }
