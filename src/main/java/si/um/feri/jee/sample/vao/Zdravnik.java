@@ -8,7 +8,6 @@ public class Zdravnik {
     private String priimek;
     private String email;
     private int kvota;
-    private ArrayList<Pacient> pacienti;
 
     public Zdravnik(){
         this("", "", "", 0);
@@ -19,15 +18,6 @@ public class Zdravnik {
         this.priimek = priimek;
         this.email = email;
         this.kvota = kvota;
-        this.pacienti = new ArrayList<>();
-    }
-
-    public ArrayList<Pacient> getPacienti() {
-        return pacienti;
-    }
-
-    public void setPacienti(Pacient pacient) {
-        this.pacienti.add(pacient);
     }
 
     public String getIme() {
@@ -70,10 +60,6 @@ public class Zdravnik {
                 ", email='" + email + '\'' +
                 ", kvota=" + kvota +
                 '}';
-        for(Pacient pacient: pacienti){
-            zaNazaj += pacient.toString();
-        }
-        zaNazaj += "}";
 
         return zaNazaj;
     }

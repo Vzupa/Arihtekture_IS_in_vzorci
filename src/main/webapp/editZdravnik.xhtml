@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Edit #{zdravnik.selectedEmail}</title>
+</h:head>
+
+<h:body>
+    <f:view>
+        <h:form>
+
+            Zdravniki:
+            [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejZdravnike.xhtml">All</a> |
+            <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Add new </a>]
+            Pacienti:
+            [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejPaciente.xhtml">All</a> |
+            <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Add new </a>]
+            <hr />
+
+            <f:metadata>
+                <f:viewParam name="email" value="#{zdravnik.selectedEmail}" />
+            </f:metadata>
+
+            Ime: <h:inputText id="n_ime" value="#{zdravnik.selectedZdravnik.ime}"/><br/>
+            Priimek: <h:inputText id="n_priimek" value="#{zdravnik.selectedZdravnik.priimek}"/><br/>
+            Kvota: <h:inputText id="n_kvota" value="#{zdravnik.selectedZdravnik.kvota}"/><br/>
+            E-mail: <h:inputText id="n_email" value="#{zdravnik.selectedZdravnik.email}" validatorMessage="Insert valid e-mail">
+            <f:validateRequired />
+        </h:inputText> * <h:message for="n_email" style="color:red" />
+            <br/><br/>
+            <h:commandButton value="Save" action="#{zdravnik.saveZdravnik()}"/>
+
+        </h:form>
+    </f:view>
+</h:body>
+
+</html>
+
+
+
+

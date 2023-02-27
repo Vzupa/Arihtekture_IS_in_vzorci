@@ -43,6 +43,9 @@
                     #{o.posebnosti}
                 </h:column>
                 <h:column>
+                    <h:link value="Edit" outcome="editPacient">
+                        <f:param name="email" value="#{o.email}" />
+                    </h:link> |
                     <h:commandLink value="Delete" actionListener="#{pacient.deletePacient(o)}"></h:commandLink>
                 </h:column>
             </h:dataTable>

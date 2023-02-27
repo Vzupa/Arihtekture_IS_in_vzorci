@@ -9,6 +9,8 @@ public class Pacient {
     private String email;
     private LocalDate rojstniDatum;
     private String posebnosti;
+    private Zdravnik zdravnik;
+
 
     public Pacient() {
         this("", "", "", null, "");
@@ -20,6 +22,7 @@ public class Pacient {
         this.email = email;
         this.rojstniDatum = rojstniDatum;
         this.posebnosti = posebnosti;
+        this.zdravnik = null;
     }
 
     public String getIme() {
@@ -60,6 +63,14 @@ public class Pacient {
 
     public void setPosebnosti(String posebnosti) {
         this.posebnosti = posebnosti;
+    }
+
+    public Zdravnik getZdravnik() {
+        return zdravnik;
+    }
+
+    public void setZdravnik(Zdravnik zdravnik) {
+        this.zdravnik = zdravnik;
     }
 
     @Override

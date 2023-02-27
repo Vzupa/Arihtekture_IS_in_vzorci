@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Edit #{pacient.selectedEmail}</title>
+</h:head>
+
+<h:body>
+    <f:view>
+        <h:form>
+
+            Zdravniki:
+            [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejZdravnike.xhtml">All</a> |
+            <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Add new </a>]
+            Pacienti:
+            [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejPaciente.xhtml">All</a> |
+            <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Add new </a>]
+            <hr />
+
+            <f:metadata>
+                <f:viewParam name="email" value="#{pacient.selectedEmail}" />
+            </f:metadata>
+
+            Ime: <h:inputText id="n_ime" value="#{pacient.selectedPacient.ime}"/><br/>
+            Priimek: <h:inputText id="n_priimek" value="#{pacient.selectedPacient.priimek}"/><br/>
+            Posebnosti: <h:inputText id="n_posebnosti" value="#{pacient.selectedPacient.posebnosti}"/><br/>
+            Rojstni datum: <p:calendar value="#{pacient.selectedPacient.rojstniDatum}"
+                                       locale="sl"
+                                       showOn="button"
+                                       pattern="dd.MM.yyyy" /><br/>
+            E-mail: <h:inputText id="n_email" value="#{pacient.selectedPacient.email}" validatorMessage="Insert valid e-mail">
+            <f:validateRequired />
+        </h:inputText> * <h:message for="n_email" style="color:red" />
+            <br/><br/>
+            <h:commandButton value="Save" action="#{pacient.savePacient()}"/>
+
+        </h:form>
+    </f:view>
+</h:body>
+
+</html>
+
+
+
+
