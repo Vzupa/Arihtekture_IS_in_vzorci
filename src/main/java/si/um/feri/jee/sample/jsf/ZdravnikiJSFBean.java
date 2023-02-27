@@ -1,6 +1,5 @@
 package si.um.feri.jee.sample.jsf;
 
-import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import si.um.feri.jee.sample.dao.ZdravnikDao;
@@ -19,7 +18,7 @@ public class ZdravnikiJSFBean implements Serializable {
 
     private ZdravnikDao dao = new ZdravnikMemoryDao();
     private Zdravnik selectedZdravnik = new Zdravnik();
-    private String izbranEmail;
+    private String selectedEmail;
 
     public List<Zdravnik> getAllZdravniki() throws Exception {
         return dao.getAll();
@@ -36,16 +35,26 @@ public class ZdravnikiJSFBean implements Serializable {
         return "all";
     }
 
-    public Zdravnik getNewZdravnik() {
-        return selectedZdravnik;
+    public void deleteZdravnik(Zdravnik zdravnik) throws Exception{
+        dao.delete(zdravnik.getEmail());
     }
 
     public Zdravnik getSelectedZdravnik(){
         return selectedZdravnik;
     }
 
-    public void getSelectedZdravnik(Zdravnik selectedZdravnik){
+    public void setSelectedZdravnik(Zdravnik selectedZdravnik){
         this.selectedZdravnik = selectedZdravnik;
     }
 
+    public void setSelectedEmail(String selectedEmail) {
+        this.selectedEmail = selectedEmail;
+        selectedZdravnik = dao.find(selectedEmail);
+        if(selectedZdravnik ==null)
+            selectedZdravnik = new Zdravnik();
+    }
+
+    public String getSelectedEmail() {
+        return selectedEmail;
+    }
 }

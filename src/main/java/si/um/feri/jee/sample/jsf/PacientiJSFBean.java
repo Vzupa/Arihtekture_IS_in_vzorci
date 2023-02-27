@@ -18,7 +18,7 @@ public class PacientiJSFBean implements Serializable {
 
     private PacientDao dao = new PacientMemoryDao();
     private Pacient selectedPacient = new Pacient();
-    private String izbranEmail;
+    private String selectedEmail;
 
     public List<Pacient> getAllPacienti() throws Exception {
         return dao.getAll();
@@ -49,14 +49,19 @@ public class PacientiJSFBean implements Serializable {
         this.selectedPacient = selectedPacient;
     }
 
-    public void setIzbranEmail(String email) throws Exception{
-        izbranEmail = email;
-        selectedPacient = dao.find(izbranEmail);
+    public void setSelectedEmail(String email) throws Exception{
+        selectedEmail = email;
+        selectedPacient = dao.find(selectedEmail);
         if(selectedPacient == null)
             selectedPacient = new Pacient();
     }
 
-    public String getIzbranEmail(){
-        return izbranEmail;
+    public String getSelectedEmail(){
+        return selectedEmail;
     }
+
+    public void deletePacient(Pacient pacient)throws Exception{
+        dao.delete(pacient.getEmail());
+    }
+
 }

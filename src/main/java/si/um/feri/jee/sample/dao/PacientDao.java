@@ -10,4 +10,6 @@ public interface PacientDao {
     Pacient find(String email);
     void save(Pacient pacient);
 
+    void delete(String email);
+
 }

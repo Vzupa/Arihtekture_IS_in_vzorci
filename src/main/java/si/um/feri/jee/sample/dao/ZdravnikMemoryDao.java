@@ -1,6 +1,7 @@
 package si.um.feri.jee.sample.dao;
 
 
+import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
 import java.util.ArrayList;
@@ -32,11 +33,23 @@ public class ZdravnikMemoryDao implements ZdravnikDao{
     @Override
     public void save(Zdravnik o)  {
         log.info("DAO: saving "+o);
-//        if(find(o.getEmail())!=null) {
-//            log.info("DAO: editing "+o);
-//            delete(o.getEmail());
-//        }
+        if(find(o.getEmail())!=null) {
+            log.info("DAO: editing "+o);
+            delete(o.getEmail());
+        }
         zdravniki.add(o);
     }
-    
+
+    @Override
+    public void delete(String email) {
+        log.info("Deleting: " + email);
+        Zdravnik zaDelete = null;
+        for (Zdravnik zdravnik : zdravniki){
+            if(zdravnik.getEmail().equals(email))
+                zaDelete = zdravnik;
+        }
+
+        if(zaDelete != null)
+            zdravniki.remove(zaDelete);
+    }
 }

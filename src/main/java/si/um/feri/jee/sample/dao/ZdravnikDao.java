@@ -9,5 +9,6 @@ public interface ZdravnikDao {
     List<Zdravnik> getAll();
     Zdravnik find(String email);
     void save(Zdravnik zdravnik);
+    void delete(String email);
 
 }

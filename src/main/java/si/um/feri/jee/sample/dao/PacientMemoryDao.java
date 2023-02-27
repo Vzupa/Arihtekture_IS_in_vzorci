@@ -32,10 +32,23 @@ public class PacientMemoryDao implements PacientDao {
     @Override
     public void save(Pacient o)  {
         log.info("DAO: saving "+o);
-//        if(find(o.getEmail())!=null) {
-//            log.info("DAO: editing "+o);
-//            delete(o.getEmail());
-//        }
+        if(find(o.getEmail())!=null) {
+            log.info("DAO: editing "+o);
+            delete(o.getEmail());
+        }
         pacienti.add(o);
+    }
+
+    @Override
+    public void delete(String email){
+        log.info("Deleting: " + email);
+        Pacient zaDelete = null;
+        for (Pacient pacient : pacienti){
+            if(pacient.getEmail().equals(email))
+                zaDelete = pacient;
+        }
+
+        if(zaDelete != null)
+            pacienti.remove(zaDelete);
     }
 }
