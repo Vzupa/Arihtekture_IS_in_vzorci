@@ -45,9 +45,19 @@
                     #{o.kvota}
                 </h:column>
                 <h:column>
-                    <h:commandLink value="Delete" actionListener="#{zdravnik.deleteZdravnik(o)}"></h:commandLink>
+                    <h:link value="Edit" outcome="editZdravnik">
+                        <f:param name="email" value="#{o.email}" />
+                    </h:link> |
+                    <h:commandLink value="Delete" onclick="confirmDelete(event)" actionListener="#{zdravnik.deleteZdravnik(o)}"></h:commandLink>
                 </h:column>
             </h:dataTable>
+            <script>
+                function confirmDelete(event) {
+                    if (!confirm("Are you sure you want to delete this zdravnik?")) {
+                        event.preventDefault();
+                    }
+                }
+            </script>
         </h:form>
     </f:view>
 </h:body>

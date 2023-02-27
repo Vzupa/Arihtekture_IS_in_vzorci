@@ -64,4 +64,7 @@ public class PacientiJSFBean implements Serializable {
         dao.delete(pacient.getEmail());
     }
 
+    public void setSelectedPacient(Pacient selectedPacient) {
+        this.selectedPacient = selectedPacient;
+    }
 }

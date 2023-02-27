@@ -46,9 +46,17 @@
                     <h:link value="Edit" outcome="editPacient">
                         <f:param name="email" value="#{o.email}" />
                     </h:link> |
-                    <h:commandLink value="Delete" actionListener="#{pacient.deletePacient(o)}"></h:commandLink>
+                    <h:commandLink value="Delete" onclick="confirmDelete(event)" actionListener="#{pacient.deletePacient(o)}"></h:commandLink>
                 </h:column>
             </h:dataTable>
+            <script>
+                function confirmDelete(event) {
+                    if (!confirm("Are you sure you want to delete this pacient?")) {
+                        event.preventDefault();
+                    }
+                }
+            </script>
+
         </h:form>
     </f:view>
 </h:body>
