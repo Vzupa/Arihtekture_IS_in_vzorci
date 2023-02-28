@@ -4,28 +4,70 @@
 <h:head>
     <meta charset="UTF-8" />
     <title>Pregled #{zdravnik.selectedEmail}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 </h:head>
 <h:body>
     <f:view>
-
-        Zdravniki:
-        [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejZdravnike.xhtml">All</a> |
-        <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Add new </a>]
-        Pacienti:
-        [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejPaciente.xhtml">All</a> |
-        <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Add new </a>]
-        <hr />
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">#{zdravnik.selectedZdravnik.email}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Zdravniki</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Pacienti</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
         <f:metadata>
             <f:viewParam name="email" value="#{zdravnik.selectedEmail}" />
         </f:metadata>
 
-        Ime: <b>#{zdravnik.selectedZdravnik.ime}</b><br/>
-        Priimek: <b>#{zdravnik.selectedZdravnik.priimek}</b><br/>
-        Email: <b>#{zdravnik.selectedZdravnik.email}</b><br/>
-        kvota: <b>#{zdravnik.selectedZdravnik.kvota}</b><br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Ime:</h5>
+                    <p><b>#{zdravnik.selectedZdravnik.ime}</b></p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Priimek:</h5>
+                    <p><b>#{zdravnik.selectedZdravnik.priimek}</b></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Email:</h5>
+                    <p><b>#{zdravnik.selectedZdravnik.email}</b></p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Kvota:</h5>
+                    <p><b>#{zdravnik.selectedZdravnik.kvota}</b></p>
+                </div>
+            </div>
+        </div>
+
 
     </f:view>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </h:body>
 
 </html>

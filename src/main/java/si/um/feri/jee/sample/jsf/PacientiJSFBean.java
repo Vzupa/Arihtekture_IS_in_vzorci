@@ -5,8 +5,10 @@ import jakarta.inject.Named;
 import si.um.feri.jee.sample.dao.PacientDao;
 import si.um.feri.jee.sample.dao.PacientMemoryDao;
 import si.um.feri.jee.sample.vao.Pacient;
+import si.um.feri.jee.sample.vao.Zdravnik;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -18,13 +20,21 @@ public class PacientiJSFBean implements Serializable {
 
     private PacientDao dao = new PacientMemoryDao();
     private Pacient selectedPacient = new Pacient();
+    private Zdravnik izbranZdravnik;
     private String selectedEmail;
 
+    {
+        Pacient ena = new Pacient("PRVI", "NAJB", "LMAO@", LocalDate.parse("1990-10-01"), "");
+        dao.save(ena);
+    }
+
     public List<Pacient> getAllPacienti() throws Exception {
+        this.selectedPacient = new Pacient();
         return dao.getAll();
     }
 
     public String savePacient() throws Exception {
+        log.info("klice se save");
         Pacient newPacient = new Pacient();
         newPacient.setIme(selectedPacient.getIme());
         newPacient.setPriimek(selectedPacient.getPriimek());
@@ -66,5 +76,14 @@ public class PacientiJSFBean implements Serializable {
 
     public void setSelectedPacient(Pacient selectedPacient) {
         this.selectedPacient = selectedPacient;
+    }
+
+    public Zdravnik getIzbranZdravnik() {
+        return izbranZdravnik;
+    }
+
+    public void setIzbranZdravnik(Zdravnik izbranZdravnik) {
+        log.info("izbran zdravnik: " + izbranZdravnik.getEmail());
+        this.izbranZdravnik = izbranZdravnik;
     }
 }

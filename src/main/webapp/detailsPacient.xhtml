@@ -4,30 +4,76 @@
 <h:head>
     <meta charset="UTF-8" />
     <title>Pregled #{pacient.selectedEmail}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 </h:head>
 
 <h:body>
     <f:view>
-
-        Zdravniki:
-        [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejZdravnike.xhtml">All</a> |
-        <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Add new </a>]
-        Pacienti:
-        [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejPaciente.xhtml">All</a> |
-        <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Add new </a>]
-        <hr />
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">#{pacient.selectedPacient.email}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Zdravniki</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Pacienti</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
         <f:metadata>
             <f:viewParam name="email" value="#{pacient.selectedEmail}" />
         </f:metadata>
 
-        Ime: <b>#{pacient.selectedPacient.ime}</b><br/>
-        Priimek: <b>#{pacient.selectedPacient.priimek}</b><br/>
-        Email: <b>#{pacient.selectedPacient.email}</b><br/>
-        rojsniDatum: <b>#{pacient.selectedPacient.rojstniDatum}</b><br/>
-        posebnosti: <b>#{pacient.selectedPacient.posebnosti}</b><br/>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Pacient #{pacient.selectedPacient.ime} #{pacient.selectedPacient.priimek}</h3>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-4">Ime:</dt>
+                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.ime}</b></dd>
+
+                        <dt class="col-sm-4">Priimek:</dt>
+                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.priimek}</b></dd>
+
+                        <dt class="col-sm-4">Email:</dt>
+                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.email}</b></dd>
+
+                        <dt class="col-sm-4">Rojstni datum:</dt>
+                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.rojstniDatum}</b></dd>
+
+                        <dt class="col-sm-4">Zdravnik:</dt>
+                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.zdravnik.ime} #{pacient.selectedPacient.zdravnik.priimek}, #{pacient.selectedPacient.zdravnik.email}</b></dd>
+
+                        <dt class="col-sm-4">Posebnosti:</dt>
+                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.posebnosti}</b></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
 
     </f:view>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </h:body>
 
 </html>

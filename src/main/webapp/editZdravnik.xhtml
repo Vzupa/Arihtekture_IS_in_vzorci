@@ -4,35 +4,76 @@
 <h:head>
     <meta charset="UTF-8" />
     <title>Edit #{zdravnik.selectedEmail}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 </h:head>
 
 <h:body>
     <f:view>
         <h:form>
-
-            Zdravniki:
-            [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejZdravnike.xhtml">All</a> |
-            <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Add new </a>]
-            Pacienti:
-            [<a href="#{facesContext.externalContext.applicationContextPath}/faces/preglejPaciente.xhtml">All</a> |
-            <a href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Add new </a>]
-            <hr />
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">#{zdravnik.selectedZdravnik.email}</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="#{facesContext.externalContext.applicationContextPath}/faces/dodajZdravnika.xhtml">Zdravniki</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="#{facesContext.externalContext.applicationContextPath}/faces/dodajPacienta.xhtml">Pacienti</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
             <f:metadata>
                 <f:viewParam name="email" value="#{zdravnik.selectedEmail}" />
             </f:metadata>
 
-            Ime: <h:inputText id="n_ime" value="#{zdravnik.selectedZdravnik.ime}"/><br/>
-            Priimek: <h:inputText id="n_priimek" value="#{zdravnik.selectedZdravnik.priimek}"/><br/>
-            Kvota: <h:inputText id="n_kvota" value="#{zdravnik.selectedZdravnik.kvota}"/><br/>
-            E-mail: <h:inputText id="n_email" value="#{zdravnik.selectedZdravnik.email}" validatorMessage="Insert valid e-mail">
-            <f:validateRequired />
-        </h:inputText> * <h:message for="n_email" style="color:red" />
-            <br/><br/>
-            <h:commandButton value="Save" action="#{zdravnik.saveZdravnik()}"/>
+            <div class="form-group">
+                <label for="n_ime">Ime:</label>
+                <h:inputText id="n_ime" class="form-control" value="#{zdravnik.selectedZdravnik.ime}" style="width: 15%"/>
+            </div>
+
+            <div class="form-group">
+                <label for="n_priimek">Priimek:</label>
+                <h:inputText id="n_priimek" class="form-control" value="#{zdravnik.selectedZdravnik.priimek}" style="width: 15%"/>
+            </div>
+
+            <div class="form-group">
+                <label for="n_kvota">Kvota:</label>
+                <h:inputText id="n_kvota" class="form-control" value="#{zdravnik.selectedZdravnik.kvota}" style="width: 15%"/>
+            </div>
+
+            <div class="form-group">
+                <label for="n_email">E-mail:</label>
+                <h:inputText id="n_email" class="form-control" value="#{zdravnik.selectedZdravnik.email}" validatorMessage="Insert valid e-mail" style="width: 15%">
+                    <f:validateRequired />
+                </h:inputText>
+                <h:message for="n_email" style="color:red" />
+            </div>
+
+            <div class="form-group">
+                <h:commandButton value="Save" class="btn btn-primary" action="#{zdravnik.saveZdravnik()}"/>
+            </div>
+
 
         </h:form>
     </f:view>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </h:body>
 
 </html>

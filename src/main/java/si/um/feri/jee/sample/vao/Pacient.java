@@ -13,7 +13,12 @@ public class Pacient {
 
 
     public Pacient() {
-        this("", "", "", null, "");
+        this("", "", "", null, "", null);
+    }
+
+    public Pacient(String ime, String priimek, String email, LocalDate rojstniDatum, String posebnosti, Zdravnik zdravnik) {
+        this(ime, priimek, email, rojstniDatum, posebnosti);
+        this.zdravnik = zdravnik;
     }
 
     public Pacient(String ime, String priimek, String email, LocalDate rojstniDatum, String posebnosti) {
