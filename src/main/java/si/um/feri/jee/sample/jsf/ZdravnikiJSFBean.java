@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Named("zdravnik")
+@Named("zdravnikBean")
 @SessionScoped
 public class ZdravnikiJSFBean implements Serializable {
 

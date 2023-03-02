@@ -40,28 +40,28 @@
         <div class="form-group row">
             <label for="ime" class="col-sm-2 col-form-label">Ime:</label>
             <div class="col-sm-10">
-                <h:inputText id="ime" value="#{pacient.selectedPacient.ime}" class="form-control"
+                <h:inputText id="ime" value="#{pacientBean.selectedPacient.ime}" class="form-control"
                              style="width: 15%"></h:inputText>
             </div>
         </div>
         <div class="form-group row">
             <label for="priimek" class="col-sm-2 col-form-label">Priimek:</label>
             <div class="col-sm-10">
-                <h:inputText id="priimek" value="#{pacient.selectedPacient.priimek}" class="form-control"
+                <h:inputText id="priimek" value="#{pacientBean.selectedPacient.priimek}" class="form-control"
                              style="width: 15%"></h:inputText>
             </div>
         </div>
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label">Email:</label>
             <div class="col-sm-10">
-                <h:inputText id="email" value="#{pacient.selectedPacient.email}" class="form-control"
+                <h:inputText id="email" value="#{pacientBean.selectedPacient.email}" class="form-control"
                              style="width: 15%"></h:inputText>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">RojstniDatum:</label>
             <div class="col-sm-10">
-                <p:calendar value="#{pacient.selectedPacient.rojstniDatum}"
+                <p:calendar value="#{pacientBean.selectedPacient.rojstniDatum}"
                             locale="sl"
                             showOn="button"
                             pattern="dd.MM.yyyy"
@@ -71,21 +71,21 @@
         <div class="form-group row">
             <label for="posebnosti" class="col-sm-2 col-form-label">Posebnosti:</label>
             <div class="col-sm-10">
-                <h:inputTextarea row = "10" col = "10" id="posebnosti" value="#{pacient.selectedPacient.posebnosti}" class="form-control"
-                             style="width: 15%" />
+                <h:inputTextarea row = "10" col = "10" id="posebnosti" value="#{pacientBean.selectedPacient.posebnosti}" class="form-control"
+                                 style="width: 15%" />
             </div>
         </div>
         <div class="form-group row">
             <label for="zdravniki" class="col-sm-2 col-form-label">Zdravnik:</label>
             <div class="col-sm-10">
-                <h:selectOneMenu id="zdravniki" value="#{pacient.izbranZdravnik}" converter="omnifaces.SelectItemsConverter">
-                    <f:selectItems value="#{zdravnik.allZdravniki}" var="zdravnikec" itemValue="#{zdravnikec}" itemLabel="#{zdravnikec.ime} #{zdravnikec.priimek} #{zdravnikec.email}"/>
+                <h:selectOneMenu id="zdravniki" value="#{pacientBean.izbranZdravnik}" converter="omnifaces.SelectItemsConverter">
+                    <f:selectItems value="#{zdravnikBean.allZdravniki}" var="zdravnikec" itemValue="#{zdravnikec}" itemLabel="#{zdravnikec.ime} #{zdravnikec.priimek} #{zdravnikec.email}"/>
                 </h:selectOneMenu>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-4 text-right">
-                <h:commandButton value="Dodaj" action="#{pacient.savePacient()}"
+                <h:commandButton value="Dodaj" action="#{pacientBean.savePacient()}"
                                  class="btn btn-primary"></h:commandButton>
             </div>
         </div>
@@ -95,7 +95,7 @@
     <h1 class="mt-4">Vsi Pacienti</h1>
     <h:form>
         <div class="table-responsive">
-            <h:dataTable value="#{pacient.allPacienti}" var="o"
+            <h:dataTable value="#{pacientBean.allPacienti}" var="o"
                          styleClass="table table-striped">
                 <h:column>
                     <f:facet name="header">Email</f:facet>
@@ -130,7 +130,7 @@
                     </h:link> |
                     <h:commandLink value="Delete"
                                    onclick="confirmDelete(event)"
-                                   actionListener="#{pacient.deletePacient(o)}"
+                                   actionListener="#{pacientBean.deletePacient(o)}"
                                    styleClass="btn btn-danger btn-sm">
                     </h:commandLink>
                 </h:column>

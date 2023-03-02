@@ -3,7 +3,7 @@
 
 <h:head>
     <meta charset="UTF-8" />
-    <title>Edit #{zdravnik.selectedEmail}</title>
+    <title>Edit #{zdravnikBean.selectedEmail}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 </h:head>
@@ -12,7 +12,7 @@
     <f:view>
         <h:form>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">#{zdravnik.selectedZdravnik.email}</a>
+                <a class="navbar-brand" href="#">#{zdravnikBean.selectedZdravnik.email}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,34 +32,34 @@
             </nav>
 
             <f:metadata>
-                <f:viewParam name="email" value="#{zdravnik.selectedEmail}" />
+                <f:viewParam name="email" value="#{zdravnikBean.selectedEmail}" />
             </f:metadata>
 
             <div class="form-group">
                 <label for="n_ime">Ime:</label>
-                <h:inputText id="n_ime" class="form-control" value="#{zdravnik.selectedZdravnik.ime}" style="width: 15%"/>
+                <h:inputText id="n_ime" class="form-control" value="#{zdravnikBean.selectedZdravnik.ime}" style="width: 15%"/>
             </div>
 
             <div class="form-group">
                 <label for="n_priimek">Priimek:</label>
-                <h:inputText id="n_priimek" class="form-control" value="#{zdravnik.selectedZdravnik.priimek}" style="width: 15%"/>
+                <h:inputText id="n_priimek" class="form-control" value="#{zdravnikBean.selectedZdravnik.priimek}" style="width: 15%"/>
             </div>
 
             <div class="form-group">
                 <label for="n_kvota">Kvota:</label>
-                <h:inputText id="n_kvota" class="form-control" value="#{zdravnik.selectedZdravnik.kvota}" style="width: 15%"/>
+                <h:inputText id="n_kvota" class="form-control" value="#{zdravnikBean.selectedZdravnik.kvota}" style="width: 15%"/>
             </div>
 
             <div class="form-group">
                 <label for="n_email">E-mail:</label>
-                <h:inputText id="n_email" class="form-control" value="#{zdravnik.selectedZdravnik.email}" validatorMessage="Insert valid e-mail" style="width: 15%">
+                <h:inputText id="n_email" class="form-control" value="#{zdravnikBean.selectedZdravnik.email}" validatorMessage="Insert valid e-mail" style="width: 15%">
                     <f:validateRequired />
                 </h:inputText>
                 <h:message for="n_email" style="color:red" />
             </div>
 
             <div class="form-group">
-                <h:commandButton value="Save" class="btn btn-primary" action="#{zdravnik.saveZdravnik()}"/>
+                <h:commandButton value="Save" class="btn btn-primary" action="#{zdravnikBean.saveZdravnik()}"/>
             </div>
 
 

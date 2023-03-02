@@ -3,14 +3,14 @@
 
 <h:head>
     <meta charset="UTF-8" />
-    <title>Pregled #{zdravnik.selectedEmail}</title>
+    <title>Pregled #{zdravnikBean.selectedEmail}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 </h:head>
 <h:body>
     <f:view>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">#{zdravnik.selectedZdravnik.email}</a>
+            <a class="navbar-brand" href="#">#{zdravnikBean.selectedZdravnik.email}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,28 +30,28 @@
         </nav>
 
         <f:metadata>
-            <f:viewParam name="email" value="#{zdravnik.selectedEmail}" />
+            <f:viewParam name="email" value="#{zdravnikBean.selectedEmail}" />
         </f:metadata>
 
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <h5>Ime:</h5>
-                    <p><b>#{zdravnik.selectedZdravnik.ime}</b></p>
+                    <p><b>#{zdravnikBean.selectedZdravnik.ime}</b></p>
                 </div>
                 <div class="col-md-6">
                     <h5>Priimek:</h5>
-                    <p><b>#{zdravnik.selectedZdravnik.priimek}</b></p>
+                    <p><b>#{zdravnikBean.selectedZdravnik.priimek}</b></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <h5>Email:</h5>
-                    <p><b>#{zdravnik.selectedZdravnik.email}</b></p>
+                    <p><b>#{zdravnikBean.selectedZdravnik.email}</b></p>
                 </div>
                 <div class="col-md-6">
                     <h5>Kvota:</h5>
-                    <p><b>#{zdravnik.selectedZdravnik.kvota}</b></p>
+                    <p><b>#{zdravnikBean.selectedZdravnik.kvota}</b></p>
                 </div>
             </div>
         </div>

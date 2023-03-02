@@ -36,34 +36,34 @@
 			<div class="form-group row">
 				<label for="ime" class="col-sm-2 col-form-label">Ime:</label>
 				<div class="col-sm-10">
-					<h:inputText id="ime" value="#{zdravnik.selectedZdravnik.ime}" class="form-control"
-								 style="width: 15%"></h:inputText>
+					<h:inputText id="ime" value="#{zdravnikBean.selectedZdravnik.ime}" class="form-control"
+                                 style="width: 15%"></h:inputText>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="priimek" class="col-sm-2 col-form-label">Priimek:</label>
 				<div class="col-sm-10">
-					<h:inputText id="priimek" value="#{zdravnik.selectedZdravnik.priimek}" class="form-control"
-								 style="width: 15%"></h:inputText>
+					<h:inputText id="priimek" value="#{zdravnikBean.selectedZdravnik.priimek}" class="form-control"
+                                 style="width: 15%"></h:inputText>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="email" class="col-sm-2 col-form-label">Email:</label>
 				<div class="col-sm-10">
-					<h:inputText id="email" value="#{zdravnik.selectedZdravnik.email}" class="form-control"
-								 style="width: 15%"></h:inputText>
+					<h:inputText id="email" value="#{zdravnikBean.selectedZdravnik.email}" class="form-control"
+                                 style="width: 15%"></h:inputText>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="email" class="col-sm-2 col-form-label">Kvota:</label>
 				<div class="col-sm-10">
-					<h:inputText id="kvota" value="#{zdravnik.selectedZdravnik.kvota}" class="form-control"
-								 style="width: 15%"></h:inputText>
+					<h:inputText id="kvota" value="#{zdravnikBean.selectedZdravnik.kvota}" class="form-control"
+                                 style="width: 15%"></h:inputText>
 				</div>
 			</div>
 			<div class="form-group row">
 				<div class="col-sm-4 text-right">
-					<h:commandButton value="Dodaj" action="#{zdravnik.saveZdravnik()}"
+					<h:commandButton value="Dodaj" action="#{zdravnikBean.saveZdravnik()}"
 									 class="btn btn-primary"></h:commandButton>
 				</div>
 			</div>
@@ -72,7 +72,7 @@
         <h1 class="mt-4">Vsi Zdravniki</h1>
         <h:form>
             <div class="table-responsive">
-                <h:dataTable value="#{zdravnik.allZdravniki}" var="o"
+                <h:dataTable value="#{zdravnikBean.allZdravniki}" var="o"
                              styleClass="table table-striped">
                     <h:column>
                         <f:facet name="header">Email</f:facet>
@@ -99,7 +99,7 @@
                         </h:link> |
                         <h:commandLink value="Delete"
                                        onclick="confirmDelete(event)"
-                                       actionListener="#{zdravnik.deleteZdravnik(o)}"
+                                       actionListener="#{zdravnikBean.deleteZdravnik(o)}"
                                        styleClass="btn btn-danger btn-sm">
                         </h:commandLink>
                     </h:column>

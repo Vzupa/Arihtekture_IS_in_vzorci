@@ -3,7 +3,7 @@
 
 <h:head>
     <meta charset="UTF-8" />
-    <title>Pregled #{pacient.selectedEmail}</title>
+    <title>Pregled #{pacientBean.selectedEmail}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 </h:head>
@@ -11,7 +11,7 @@
 <h:body>
     <f:view>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">#{pacient.selectedPacient.email}</a>
+            <a class="navbar-brand" href="#">#{pacientBean.selectedPacient.email}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,32 +31,32 @@
         </nav>
 
         <f:metadata>
-            <f:viewParam name="email" value="#{pacient.selectedEmail}" />
+            <f:viewParam name="email" value="#{pacientBean.selectedEmail}" />
         </f:metadata>
 
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Pacient #{pacient.selectedPacient.ime} #{pacient.selectedPacient.priimek}</h3>
+                    <h3>Pacient #{pacientBean.selectedPacient.ime} #{pacientBean.selectedPacient.priimek}</h3>
                     <hr />
                     <dl class="row">
                         <dt class="col-sm-4">Ime:</dt>
-                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.ime}</b></dd>
+                        <dd class="col-sm-8"><b>#{pacientBean.selectedPacient.ime}</b></dd>
 
                         <dt class="col-sm-4">Priimek:</dt>
-                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.priimek}</b></dd>
+                        <dd class="col-sm-8"><b>#{pacientBean.selectedPacient.priimek}</b></dd>
 
                         <dt class="col-sm-4">Email:</dt>
-                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.email}</b></dd>
+                        <dd class="col-sm-8"><b>#{pacientBean.selectedPacient.email}</b></dd>
 
                         <dt class="col-sm-4">Rojstni datum:</dt>
-                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.rojstniDatum}</b></dd>
+                        <dd class="col-sm-8"><b>#{pacientBean.selectedPacient.rojstniDatum}</b></dd>
 
                         <dt class="col-sm-4">Zdravnik:</dt>
-                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.zdravnik.ime} #{pacient.selectedPacient.zdravnik.priimek}, #{pacient.selectedPacient.zdravnik.email}</b></dd>
+                        <dd class="col-sm-8"><b>#{pacientBean.selectedPacient.zdravnik.ime} #{pacientBean.selectedPacient.zdravnik.priimek}, #{pacientBean.selectedPacient.zdravnik.email}</b></dd>
 
                         <dt class="col-sm-4">Posebnosti:</dt>
-                        <dd class="col-sm-8"><b>#{pacient.selectedPacient.posebnosti}</b></dd>
+                        <dd class="col-sm-8"><b>#{pacientBean.selectedPacient.posebnosti}</b></dd>
                     </dl>
                 </div>
             </div>
