@@ -33,29 +33,27 @@
             <f:viewParam name="email" value="#{zdravnikBean.selectedEmail}" />
         </f:metadata>
 
-        <div class="container">
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>Ime:</h5>
-                    <p><b>#{zdravnikBean.selectedZdravnik.ime}</b></p>
-                </div>
-                <div class="col-md-6">
-                    <h5>Priimek:</h5>
-                    <p><b>#{zdravnikBean.selectedZdravnik.priimek}</b></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Email:</h5>
-                    <p><b>#{zdravnikBean.selectedZdravnik.email}</b></p>
-                </div>
-                <div class="col-md-6">
-                    <h5>Kvota:</h5>
-                    <p><b>#{zdravnikBean.selectedZdravnik.kvota}</b></p>
+                    <h3>Pacient #{zdravnikBean.selectedZdravnik.ime} #{zdravnikBean.selectedZdravnik.priimek}</h3>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-4">Ime:</dt>
+                        <dd class="col-sm-8"><b>#{zdravnikBean.selectedZdravnik.ime}</b></dd>
+
+                        <dt class="col-sm-4">Priimek:</dt>
+                        <dd class="col-sm-8"><b>#{zdravnikBean.selectedZdravnik.priimek}</b></dd>
+
+                        <dt class="col-sm-4">Email:</dt>
+                        <dd class="col-sm-8"><b>#{zdravnikBean.selectedZdravnik.email}</b></dd>
+
+                        <dt class="col-sm-4">Rojstni datum:</dt>
+                        <dd class="col-sm-8"><b>#{zdravnikBean.selectedZdravnik.kvota}</b></dd>
+                    </dl>
                 </div>
             </div>
         </div>
-
 
     </f:view>
 

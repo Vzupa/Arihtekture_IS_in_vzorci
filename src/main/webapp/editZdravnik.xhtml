@@ -35,33 +35,34 @@
                 <f:viewParam name="email" value="#{zdravnikBean.selectedEmail}" />
             </f:metadata>
 
-            <div class="form-group">
-                <label for="n_ime">Ime:</label>
-                <h:inputText id="n_ime" class="form-control" value="#{zdravnikBean.selectedZdravnik.ime}" style="width: 15%"/>
-            </div>
+            <div>
+                <div class="form-group">
+                    <label for="n_ime">Ime:</label>
+                    <h:inputText id="n_ime" class="form-control" value="#{zdravnikBean.selectedZdravnik.ime}" style="width: 15%"/>
+                </div>
 
-            <div class="form-group">
-                <label for="n_priimek">Priimek:</label>
-                <h:inputText id="n_priimek" class="form-control" value="#{zdravnikBean.selectedZdravnik.priimek}" style="width: 15%"/>
-            </div>
+                <div class="form-group">
+                    <label for="n_priimek">Priimek:</label>
+                    <h:inputText id="n_priimek" class="form-control" value="#{zdravnikBean.selectedZdravnik.priimek}" style="width: 15%"/>
+                </div>
 
-            <div class="form-group">
-                <label for="n_kvota">Kvota:</label>
-                <h:inputText id="n_kvota" class="form-control" value="#{zdravnikBean.selectedZdravnik.kvota}" style="width: 15%"/>
-            </div>
+                <div class="form-group">
+                    <label for="n_kvota">Kvota:</label>
+                    <h:inputText id="n_kvota" class="form-control" value="#{zdravnikBean.selectedZdravnik.kvota}" style="width: 15%"/>
+                </div>
 
-            <div class="form-group">
-                <label for="n_email">E-mail:</label>
-                <h:inputText id="n_email" class="form-control" value="#{zdravnikBean.selectedZdravnik.email}" validatorMessage="Insert valid e-mail" style="width: 15%">
-                    <f:validateRequired />
-                </h:inputText>
-                <h:message for="n_email" style="color:red" />
-            </div>
+                <div class="form-group">
+                    <label for="n_email">E-mail:</label>
+                    <h:inputText id="n_email" class="form-control" value="#{zdravnikBean.selectedZdravnik.email}" validatorMessage="Insert valid e-mail" style="width: 15%">
+                        <f:validateRequired />
+                    </h:inputText>
+                    <h:message for="n_email" style="color:red" />
+                </div>
 
-            <div class="form-group">
-                <h:commandButton value="Save" class="btn btn-primary" action="#{zdravnikBean.saveZdravnik()}"/>
+                <div class="form-group">
+                    <h:commandButton value="Save" class="btn btn-primary" action="#{zdravnikBean.saveZdravnik()}"/>
+                </div>
             </div>
-
 
         </h:form>
     </f:view>

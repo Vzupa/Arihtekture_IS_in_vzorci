@@ -1,6 +1,8 @@
 package si.um.feri.jee.sample.jsf;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import si.um.feri.jee.sample.dao.PacientDao;
 import si.um.feri.jee.sample.dao.PacientMemoryDao;
@@ -18,15 +20,12 @@ public class PacientiJSFBean implements Serializable {
 
     Logger log = Logger.getLogger(PacientiJSFBean.class.toString());
 
-    private PacientDao dao = new PacientMemoryDao();
+    @Inject
+    private PacientMemoryDao dao;
     private Pacient selectedPacient = new Pacient();
     private Zdravnik izbranZdravnik;
     private String selectedEmail;
 
-    {
-        Pacient ena = new Pacient("PRVI", "NAJB", "LMAO@", LocalDate.parse("1990-10-01"), "");
-        dao.save(ena);
-    }
 
     public List<Pacient> getAllPacienti() throws Exception {
         this.selectedPacient = new Pacient();
@@ -86,4 +85,11 @@ public class PacientiJSFBean implements Serializable {
         log.info("izbran zdravnik: " + izbranZdravnik.getEmail());
         this.izbranZdravnik = izbranZdravnik;
     }
+
+    @PostConstruct
+    public void narediTestne()	{
+        Pacient ena = new Pacient("Janez", "Novak", "Janez.Novak@gmail.com", LocalDate.parse("1990-10-01"), "");
+        dao.save(ena);
+    }
+
 }

@@ -1,15 +1,18 @@
 package si.um.feri.jee.sample.dao;
 
 
+import jakarta.enterprise.context.SessionScoped;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class ZdravnikMemoryDao implements ZdravnikDao{
+@SessionScoped
+public class ZdravnikMemoryDao implements ZdravnikDao, Serializable {
 
     Logger log= Logger.getLogger(ZdravnikMemoryDao.class.toString());
 

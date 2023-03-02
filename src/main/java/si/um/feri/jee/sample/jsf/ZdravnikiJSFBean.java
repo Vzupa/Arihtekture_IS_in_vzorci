@@ -1,6 +1,8 @@
 package si.um.feri.jee.sample.jsf;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import si.um.feri.jee.sample.dao.ZdravnikDao;
 import si.um.feri.jee.sample.dao.ZdravnikMemoryDao;
@@ -16,19 +18,11 @@ public class ZdravnikiJSFBean implements Serializable {
 
     Logger log = Logger.getLogger(ZdravnikiJSFBean.class.toString());
 
-    private ZdravnikDao dao = new ZdravnikMemoryDao();
+    @Inject
+    private ZdravnikMemoryDao dao;
     private Zdravnik selectedZdravnik = new Zdravnik();
     private String selectedEmail;
 
-    {
-        Zdravnik ena = new Zdravnik("PRVI", "JE", "NAJ@", 5);
-        Zdravnik dva = new Zdravnik("DRUGI", "NE", "GE@", 10);
-        Zdravnik tri = new Zdravnik("TRETJI", "LM", "ZU@", 15);
-
-        dao.save(ena);
-        dao.save(dva);
-        dao.save(tri);
-    }
 
     public List<Zdravnik> getAllZdravniki() throws Exception {
         this.selectedZdravnik = new Zdravnik();
@@ -67,5 +61,18 @@ public class ZdravnikiJSFBean implements Serializable {
 
     public String getSelectedEmail() {
         return selectedEmail;
+    }
+
+    @PostConstruct
+    public void narediTestne(){
+        Zdravnik nic = new Zdravnik("", "", "", 0);
+        Zdravnik ena = new Zdravnik("Ana", "Novak", "Ana.Novak@gmail.com", 5);
+        Zdravnik dva = new Zdravnik("Boris", "Kovačič", "Boric.Kovačič@gmail.com", 10);
+        Zdravnik tri = new Zdravnik("Cilka", "Horvar", "Cilka.Horvar@gmail.com", 15);
+
+        dao.save(nic);
+        dao.save(ena);
+        dao.save(dva);
+        dao.save(tri);
     }
 }
