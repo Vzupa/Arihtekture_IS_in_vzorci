@@ -63,16 +63,4 @@ public class ZdravnikiJSFBean implements Serializable {
         return selectedEmail;
     }
 
-    @PostConstruct
-    public void narediTestne(){
-        Zdravnik nic = new Zdravnik("", "", "", 0);
-        Zdravnik ena = new Zdravnik("Ana", "Novak", "Ana.Novak@gmail.com", 5);
-        Zdravnik dva = new Zdravnik("Boris", "Kovačič", "Boric.Kovačič@gmail.com", 10);
-        Zdravnik tri = new Zdravnik("Cilka", "Horvar", "Cilka.Horvar@gmail.com", 15);
-
-        dao.save(nic);
-        dao.save(ena);
-        dao.save(dva);
-        dao.save(tri);
-    }
 }

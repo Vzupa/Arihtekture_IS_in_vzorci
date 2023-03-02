@@ -15,6 +15,7 @@
 </h:head>
 
 <h:body>
+    #{opredeljeniBean.hm()}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Pacienti</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -117,7 +118,7 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Zdravnik</f:facet>
-                    #{o.zdravnik.toString()}
+                    #{o.ime} #{o.priimek}, #{o.email}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Posebnosti</f:facet>

@@ -86,10 +86,4 @@ public class PacientiJSFBean implements Serializable {
         this.izbranZdravnik = izbranZdravnik;
     }
 
-    @PostConstruct
-    public void narediTestne()	{
-        Pacient ena = new Pacient("Janez", "Novak", "Janez.Novak@gmail.com", LocalDate.parse("1990-10-01"), "");
-        dao.save(ena);
-    }
-
 }
