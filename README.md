@@ -18,3 +18,9 @@ Sistem bo omogočal beleženje osebnih podatkov pacientov (ime, priimek, naslov,
 3. Pregled števila opredeljenih pacientov po zdravnikih, paciente brez izbranega zdravnika na ločeni spletni strani.
 
 Vašo rešitev lahko opremite tudi z lepšim izgledom (npr. BootStrap) zunanjo knjižnico gradnikov (npr. PrimeFaces) ipd.
+
+## Naloga 3:
+
+Razred(e) za hranjenje objektov (DAO) preoblikujte tako, da bo(do) skladen(ni) z vzorcem Edinec. Odločite se za ustrezno implementacijo edinca in pazite na to, da delujete v večuporabniškem okolju!
+
+Zakaj so sedaj vsi podatki hkrati vidni vsem uporabnikom vaše rešitve? Bi morali razred DAO morda prilagoditi takšnemu okolju?
