@@ -20,8 +20,7 @@ public class PacientiJSFBean implements Serializable {
 
     Logger log = Logger.getLogger(PacientiJSFBean.class.toString());
 
-    @Inject
-    private PacientMemoryDao dao;
+    private PacientMemoryDao dao = PacientMemoryDao.getInstance();
     private Pacient selectedPacient = new Pacient();
     private Zdravnik izbranZdravnik;
     private String selectedEmail;

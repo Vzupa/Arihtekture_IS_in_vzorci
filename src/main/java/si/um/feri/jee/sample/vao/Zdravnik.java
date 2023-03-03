@@ -54,12 +54,7 @@ public class Zdravnik {
 
     @Override
     public String toString() {
-        String zaNazaj = "Zdravnik{" +
-                "ime='" + ime + '\'' +
-                ", priimek='" + priimek + '\'' +
-                ", email='" + email + '\'' +
-                ", kvota=" + kvota +
-                '}';
+        String zaNazaj = this.ime + " " + this.priimek + ", " + this.email;
 
         return zaNazaj;
     }

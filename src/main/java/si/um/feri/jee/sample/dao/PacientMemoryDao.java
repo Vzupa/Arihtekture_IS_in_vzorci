@@ -11,12 +11,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-@SessionScoped
-public class PacientMemoryDao implements PacientDao, Serializable {
+public class PacientMemoryDao implements PacientDao {
 
     Logger log= Logger.getLogger(PacientMemoryDao.class.toString());
 
     private List<Pacient> pacienti= Collections.synchronizedList(new ArrayList<Pacient>());
+
+    private PacientMemoryDao(){}
+    private static  PacientMemoryDao instanca = null;
+    public static synchronized PacientMemoryDao getInstance() {
+        if (instanca == null)
+            instanca = new PacientMemoryDao();
+        return instanca;
+    }
 
     @Override
     public List<Pacient> getAll() {

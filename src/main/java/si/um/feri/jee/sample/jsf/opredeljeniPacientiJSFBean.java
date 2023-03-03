@@ -25,11 +25,9 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 
 	Logger log = Logger.getLogger(opredeljeniPacientiJSFBean.class.toString());
 
-	@Inject
-	private PacientMemoryDao pacientDao;
+	private PacientMemoryDao pacientDao = PacientMemoryDao.getInstance();
 
-	@Inject
-	private ZdravnikMemoryDao zdravnikDao;
+	private ZdravnikMemoryDao zdravnikDao = ZdravnikMemoryDao.getInstance();
 
 	private Integer neopredeljeni = 0;
 

@@ -11,12 +11,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-@SessionScoped
-public class ZdravnikMemoryDao implements ZdravnikDao, Serializable {
+public class ZdravnikMemoryDao implements ZdravnikDao {
 
     Logger log= Logger.getLogger(ZdravnikMemoryDao.class.toString());
 
     private List<Zdravnik> zdravniki= Collections.synchronizedList(new ArrayList<Zdravnik>());
+
+    private ZdravnikMemoryDao(){}
+    private static ZdravnikMemoryDao instanca = null;
+    public static synchronized ZdravnikMemoryDao getInstance() {
+        if (instanca == null)
+            instanca = new ZdravnikMemoryDao();
+        return instanca;
+    }
 
     @Override
     public List<Zdravnik> getAll() {

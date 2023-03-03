@@ -18,8 +18,7 @@ public class ZdravnikiJSFBean implements Serializable {
 
     Logger log = Logger.getLogger(ZdravnikiJSFBean.class.toString());
 
-    @Inject
-    private ZdravnikMemoryDao dao;
+    private ZdravnikMemoryDao dao = ZdravnikMemoryDao.getInstance();
     private Zdravnik selectedZdravnik = new Zdravnik();
     private String selectedEmail;
 
