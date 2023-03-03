@@ -1,13 +1,9 @@
 package si.um.feri.jee.sample.jsf;
 
-import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import si.um.feri.jee.sample.dao.ZdravnikDao;
 import si.um.feri.jee.sample.dao.ZdravnikMemoryDao;
 import si.um.feri.jee.sample.vao.Zdravnik;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;

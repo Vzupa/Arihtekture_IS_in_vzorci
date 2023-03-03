@@ -2,19 +2,13 @@ package si.um.feri.jee.sample.jsf;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import si.um.feri.jee.sample.dao.PacientDao;
 import si.um.feri.jee.sample.dao.PacientMemoryDao;
-import si.um.feri.jee.sample.dao.ZdravnikDao;
 import si.um.feri.jee.sample.dao.ZdravnikMemoryDao;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
@@ -43,7 +37,7 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 				if(pacient.getZdravnik() == zdravnik){
 					njegovi.add(pacient);
 
-					if(zdravnik.getEmail() == "" || zdravnik.getEmail() == null)
+					if(Objects.equals(zdravnik.getEmail(), "") || Objects.equals(zdravnik.getEmail(), "null"))
 						neopredeljeni++;
 				}
 			}
@@ -59,7 +53,7 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 	public void narediTestne(){
 		log.info("Dodajam testne podatke");
 
-		Zdravnik nic = new Zdravnik("", "", "", 0);
+		Zdravnik nic = new Zdravnik("", "", "null", 0);
 		Zdravnik ena = new Zdravnik("Ana", "Novak", "Ana.Novak@gmail.com", 5);
 		Zdravnik dva = new Zdravnik("Boris", "Kovačič", "Boric.Kovačič@gmail.com", 10);
 		Zdravnik tri = new Zdravnik("Cilka", "Horvar", "Cilka.Horvar@gmail.com", 15);
