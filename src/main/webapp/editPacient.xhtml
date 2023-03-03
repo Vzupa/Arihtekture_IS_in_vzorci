@@ -61,8 +61,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="zdravniki">Zdravnik:</label>
-                    <h:selectOneMenu id="zdravniki" value="#{pacientBean.selectedPacient.zdravnik.toString()}" converter="omnifaces.SelectItemsConverter" class="form-control" style="width: 15%" >
+                    <label for="zdravniki">Zdravnik: #{pacientBean.selectedPacient.zdravnik.toString()}</label>
+                    <h:selectOneMenu id="zdravniki" value="#{pacientBean.izbranZdravnik}" converter="omnifaces.SelectItemsConverter" class="form-control" style="width: 15%">
                         <f:selectItems value="#{zdravnikBean.allZdravniki}" var="zdravnikec" itemValue="#{zdravnikec}" itemLabel="#{zdravnikec.toString()}"/>
                     </h:selectOneMenu>
                 </div>

@@ -80,7 +80,7 @@
             <label for="zdravniki" class="col-sm-2 col-form-label">Zdravnik:</label>
             <div class="col-sm-10">
                 <h:selectOneMenu id="zdravniki" value="#{pacientBean.izbranZdravnik}" converter="omnifaces.SelectItemsConverter">
-                    <f:selectItems value="#{zdravnikBean.allZdravniki}" var="zdravnikec" itemValue="#{zdravnikec}" itemLabel="#{zdravnikec.ime} #{zdravnikec.priimek} #{zdravnikec.email}"/>
+                    <f:selectItems value="#{zdravnikBean.allZdravniki}" var="zdravnikec" itemValue="#{zdravnikec}" itemLabel="#{zdravnikec.toString()}"/>
                 </h:selectOneMenu>
             </div>
         </div>

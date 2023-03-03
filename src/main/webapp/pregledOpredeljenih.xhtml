@@ -37,7 +37,6 @@
 
 
     <h:form>
-        <p>Število neopredeljenih: #{opredeljeniBean.getNeopredeljeni()}</p>
         <p:dataTable value="#{opredeljeniBean.narediListo().entrySet().toArray()}" var="entry">
             <p:column headerText="Zdravnik">
                 #{entry.key.ime} #{entry.key.priimek}
@@ -48,6 +47,7 @@
                 </ul>
             </p:column>
         </p:dataTable>
+        <p>Število neopredeljenih: #{opredeljeniBean.getNeopredeljeni()}</p>
     </h:form>
 
 

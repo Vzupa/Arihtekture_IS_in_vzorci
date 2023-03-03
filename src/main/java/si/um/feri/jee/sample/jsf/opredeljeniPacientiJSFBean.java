@@ -23,13 +23,14 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 
 	private ZdravnikMemoryDao zdravnikDao = ZdravnikMemoryDao.getInstance();
 
-	private Integer neopredeljeni = 0;
+	private Integer neopredeljeni;
 
 	public Map<Zdravnik, List> narediListo(){
 		ArrayList<Pacient> pacienti = new ArrayList<>(pacientDao.getAll());
 		ArrayList<Zdravnik> zdravniki = new ArrayList<>(zdravnikDao.getAll());
 
 		Map<Zdravnik, List> relacija = new HashMap<>();
+		this.neopredeljeni = 0;
 
 		for(Zdravnik zdravnik : zdravniki){
 			List<Pacient> njegovi = new ArrayList<>();
@@ -37,8 +38,9 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 				if(pacient.getZdravnik() == zdravnik){
 					njegovi.add(pacient);
 
+					log.info("Zdravnikov majl: " + zdravnik.getEmail());
 					if(Objects.equals(zdravnik.getEmail(), "") || Objects.equals(zdravnik.getEmail(), "null"))
-						neopredeljeni++;
+						this.neopredeljeni++;
 				}
 			}
 			relacija.put(zdravnik, njegovi);
@@ -94,7 +96,7 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 	}
 
 	public Integer getNeopredeljeni() {
-		return neopredeljeni;
+		return this.neopredeljeni;
 	}
 
 }
