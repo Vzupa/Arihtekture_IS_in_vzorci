@@ -43,7 +43,7 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 				if(pacient.getZdravnik() == zdravnik){
 					njegovi.add(pacient);
 
-					if(zdravnik.getEmail() == "")
+					if(zdravnik.getEmail() == "" || zdravnik.getEmail() == null)
 						neopredeljeni++;
 				}
 			}
