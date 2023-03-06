@@ -8,20 +8,19 @@ import si.um.feri.jee.sample.vao.Zdravnik;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-public class ZdravnikPacient {
+public class SistemZaDodeljevanjeZdravnikov {
 
-    Logger log = Logger.getLogger(ZdravnikPacient.class.toString());
+    Logger log = Logger.getLogger(SistemZaDodeljevanjeZdravnikov.class.toString());
 
     private PacientMemoryDao pacientDao = PacientMemoryDao.getInstance();
 
     private ZdravnikMemoryDao zdravnikDao = ZdravnikMemoryDao.getInstance();
 
-    public void preveriKvoto(Zdravnik zdravnik, Pacient pacient){
-        int stevilo = this.prestejPaciente(zdravnik);
+    public void preveriRazpolozljivost(Zdravnik zdravnik, Pacient pacient){
+        int steviloPacientov = this.prestejPaciente(zdravnik);
         Zdravnik nulti = zdravnikDao.find("");
-        log.info("KVOTA: " + zdravnik.getKvota() + ", stevilo: " + stevilo);
 
-        if(zdravnik.getKvota() > stevilo){
+        if(zdravnik.getKvota() > steviloPacientov){
             //poslji sporocilo zdravniku in pacientu
             pacient.setZdravnik(zdravnik);
             log.info("DODANO");
@@ -37,17 +36,17 @@ public class ZdravnikPacient {
     public int prestejPaciente(Zdravnik zdravnik){
         ArrayList<Pacient> pacienti = new ArrayList<>(pacientDao.getAll());
 
-        int stevilo = 0;
+        int steviloPacientov = 0;
 
         for (Pacient pacient : pacienti){
             if(pacient.getZdravnik().equals(null))
                 continue;
 
             if (pacient.getZdravnik().getEmail().equals(zdravnik.getEmail()))
-                stevilo ++;
+                steviloPacientov ++;
         }
 
-        return stevilo;
+        return steviloPacientov;
     }
 
 }

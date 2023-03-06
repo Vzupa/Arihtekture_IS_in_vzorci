@@ -2,7 +2,7 @@ package si.um.feri.jee.sample.jsf;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import si.um.feri.jee.sample.ZdravnikPacient;
+import si.um.feri.jee.sample.SistemZaDodeljevanjeZdravnikov;
 import si.um.feri.jee.sample.dao.PacientMemoryDao;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
@@ -19,7 +19,7 @@ public class PacientiJSFBean implements Serializable {
 
     private PacientMemoryDao dao = PacientMemoryDao.getInstance();
     private Pacient selectedPacient = new Pacient();
-    private ZdravnikPacient zdravnikPacient = new ZdravnikPacient();
+    private SistemZaDodeljevanjeZdravnikov sistemZaDodeljevanjeZdravnikov = new SistemZaDodeljevanjeZdravnikov();
     private Zdravnik izbranZdravnik;
     private String selectedEmail;
 
@@ -36,7 +36,7 @@ public class PacientiJSFBean implements Serializable {
         newPacient.setEmail(selectedPacient.getEmail());
         newPacient.setRojstniDatum(selectedPacient.getRojstniDatum());
         newPacient.setPosebnosti(selectedPacient.getPosebnosti());
-        zdravnikPacient.preveriKvoto(izbranZdravnik, newPacient);
+        sistemZaDodeljevanjeZdravnikov.preveriRazpolozljivost(izbranZdravnik, newPacient);
         dao.save(newPacient);
         log.info("New patient saved: " + newPacient);
         selectedPacient = new Pacient();
@@ -81,6 +81,10 @@ public class PacientiJSFBean implements Serializable {
     public void setIzbranZdravnik(Zdravnik izbranZdravnik) {
         log.info("izbran zdravnik: " + izbranZdravnik.getEmail());
         this.izbranZdravnik = izbranZdravnik;
+    }
+
+    public void spremeniZdravnika(Zdravnik zdravnik){
+        this.izbranZdravnik = zdravnik;
     }
 
 }
