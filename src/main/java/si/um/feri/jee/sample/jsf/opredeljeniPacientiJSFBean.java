@@ -55,7 +55,7 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 	public void narediTestne(){
 		log.info("Dodajam testne podatke");
 
-		Zdravnik nic = new Zdravnik("", "", "null", 0);
+		Zdravnik nic = new Zdravnik("", "", "", 0);
 		Zdravnik ena = new Zdravnik("Ana", "Novak", "Ana.Novak@gmail.com", 5);
 		Zdravnik dva = new Zdravnik("Boris", "Kovačič", "Boric.Kovačič@gmail.com", 10);
 		Zdravnik tri = new Zdravnik("Cilka", "Horvar", "Cilka.Horvar@gmail.com", 15);

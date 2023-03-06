@@ -2,6 +2,7 @@ package si.um.feri.jee.sample.jsf;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import si.um.feri.jee.sample.ZdravnikPacient;
 import si.um.feri.jee.sample.dao.PacientMemoryDao;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
@@ -18,6 +19,7 @@ public class PacientiJSFBean implements Serializable {
 
     private PacientMemoryDao dao = PacientMemoryDao.getInstance();
     private Pacient selectedPacient = new Pacient();
+    private ZdravnikPacient zdravnikPacient = new ZdravnikPacient();
     private Zdravnik izbranZdravnik;
     private String selectedEmail;
 
@@ -34,7 +36,7 @@ public class PacientiJSFBean implements Serializable {
         newPacient.setEmail(selectedPacient.getEmail());
         newPacient.setRojstniDatum(selectedPacient.getRojstniDatum());
         newPacient.setPosebnosti(selectedPacient.getPosebnosti());
-        newPacient.setZdravnik(this.getIzbranZdravnik());
+        zdravnikPacient.preveriKvoto(izbranZdravnik, newPacient);
         dao.save(newPacient);
         log.info("New patient saved: " + newPacient);
         selectedPacient = new Pacient();
