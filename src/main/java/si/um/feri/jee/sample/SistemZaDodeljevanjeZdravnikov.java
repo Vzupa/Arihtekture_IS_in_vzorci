@@ -6,6 +6,7 @@ import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.logging.Logger;
 
 public class SistemZaDodeljevanjeZdravnikov {
@@ -21,14 +22,20 @@ public class SistemZaDodeljevanjeZdravnikov {
         Zdravnik nulti = zdravnikDao.find("");
 
         if(zdravnik.getKvota() > steviloPacientov){
-            //poslji sporocilo zdravniku in pacientu
+            MailSender.send(zdravnik.getEmail(), "uspesno", "uspesno");
+            MailSender.send(pacient.getEmail(), "uspesno", "uspesno");
             pacient.setZdravnik(zdravnik);
             log.info("DODANO");
         }
-        else {
-            //poslji sporocilo samo pacientu
-            log.info("NI DODANO");
+        else if (zdravnik.getEmail().equals("")){
             pacient.setZdravnik(nulti);
+            MailSender.send(pacient.getEmail(), "uspesno", "uspesno");
+            log.info("DODANO");
+        }
+        else {
+            pacient.setZdravnik(nulti);
+            MailSender.send(pacient.getEmail(), "neuspesno", "neuspesno");
+            log.info("NI DODANO");
         }
 
     }
