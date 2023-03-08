@@ -11,7 +11,7 @@ Sistem bo omogočal beleženje osebnih podatkov pacientov (ime, priimek, naslov,
 2. Razvijte in poženite rešitev - kreirate lahko domoroden ali Maven/Gradle projekt v IDE (Eclipse / IntelliJ) ali izhajajte iz pripravljenega Maven/Gradle projekta.
 3. Omogočite dodajanje in pregled prej navedenih podatkov (tabelarični seznam, obrazec za dodajanje, pregled podrobnosti).
 
-## Naloga 2:
+## Naloga 2: Vzpostavitev ključnih funkcionalnosti aplikacije
 
 1. Možnost urejanja podatkov (uporabniški vmesnik: ponovno uporabite funkcionalnost dodajanja),
 2. Možnost brisanja podatkov (dialog »ste prepričani«),
@@ -19,8 +19,19 @@ Sistem bo omogočal beleženje osebnih podatkov pacientov (ime, priimek, naslov,
 
 Vašo rešitev lahko opremite tudi z lepšim izgledom (npr. BootStrap) zunanjo knjižnico gradnikov (npr. PrimeFaces) ipd.
 
-## Naloga 3:
+## Naloga 3: Vzorec edinec
 
 Razred(e) za hranjenje objektov (DAO) preoblikujte tako, da bo(do) skladen(ni) z vzorcem Edinec. Odločite se za ustrezno implementacijo edinca in pazite na to, da delujete v večuporabniškem okolju!
 
 Zakaj so sedaj vsi podatki hkrati vidni vsem uporabnikom vaše rešitve? Bi morali razred DAO morda prilagoditi takšnemu okolju?
+
+## Naloga 4: Vzorec fasada, vmesni nivo, storitve aplikacijskega strežnika
+
+Pacientu boste dodali funkcionalnost izbire zdravnika:
+- V kolikor zdravnik še ne dosega polne kvote pacientov, naj zdravnik in pacient prejmeta e-poštno sporočilo, ki ju obvešča o tem, da je pacient izbral zdravnika.
+- Če zdravnik že ima napolnjeno kvoto, pa naj se sporočilo pošlje le pacientu - in sicer da izbira žal trenutno ni možna.
+
+Z namenom implementacije te funkcionalnosti, ki ne spada niti na DAO nivo, niti na nivo uporabniškega vmesnika, uvedite nov, vmesni nivo (razred), namenjen izbiri zdravnika. Preverjanje števila opredeljenih in zdravnikova kvota še vedno spadata na nivo DAO!
+
+V namen pošiljanja e-poštnih sporočil implementirajte poseben razred, skladen z vzorcem fasada.
+
