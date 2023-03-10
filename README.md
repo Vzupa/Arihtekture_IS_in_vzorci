@@ -35,3 +35,10 @@ Z namenom implementacije te funkcionalnosti, ki ne spada niti na DAO nivo, niti 
 
 V namen pošiljanja e-poštnih sporočil implementirajte poseben razred, skladen z vzorcem fasada.
 
+## Naloga 5: Sejna zrna in odjemalci
+
+Neposredno v spletni projekt uvedite sejna EJB zrna, ki so namenjena trajnemu hranjenju vrednostnih objektov (EJB temeljite na obstoječem DAO razredu).
+
+Pri tem naj bo zrno brez stanja (@Stateless), dosegljivo lokalno (@Local). Povezavo iz uporabniškega vmesnika in eventuelno med zrni vzpostavite s pomočjo oznake @EJB.
+Tudi razred, kjer je implementirana funkcionalnost izbire osebnega zdravnika naj postane EJB, pri čemur omogočite izbiro osebnega zdravnika tudi preko (nove) konzolne aplikacije.
+
