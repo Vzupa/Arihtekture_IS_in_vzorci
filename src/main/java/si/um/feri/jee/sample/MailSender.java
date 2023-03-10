@@ -11,32 +11,52 @@ import javax.naming.NamingException;
 
 import java.util.Properties;
 
-@Stateless
 public class MailSender {
+
+    private static Session session;
+    private static Properties properties = new Properties();
+
+
+    static {
+        try {
+            properties.put("mail.smpt.host", "localhost");
+            properties.put("mail.smpt.port", "25");
+            session = (Session) new InitialContext().lookup("java:jboss/mail/Default");
+        } catch (NamingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public static void send(String prejemnik, String subject, String body){
         try{
-            System.out.println("1");
-            Properties properties = new Properties();
-            properties.put("mail.smpt.host", "localhost");
-            properties.put("mail.smpt.port", "25");
-            System.out.println("4");
-
-            Session session = (Session) new InitialContext().lookup("java:jboss/mail/Default");
-            System.out.println("2");
-
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("zunanji@lmao.lmao"));
             Address prejemnikAdress = new InternetAddress(prejemnik);
             message.setRecipient(Message.RecipientType.TO, prejemnikAdress);
             message.setSubject(subject);
             message.setContent(body, "text/plain");
-            System.out.println("3");
 
             Transport.send(message);
         } catch (Exception e){
             e.printStackTrace();
         }
-
     }
+
+
+    public static void preveriEmail(String email){
+        // Ne dela, sem probaval setupat registriranje novega maila v server, sam idk kak
+        try {
+            Properties props = new Properties();
+            props.setProperty("mail.store.protocol", "imap");
+            props.setProperty("mail.imap.host", "localhost");
+            props.setProperty("mail.imap.port", "143");
+            Session session = Session.getInstance(props);
+            Store store = session.getStore("imap");
+            store.connect("localhost", "zunanji@lmao.lmao", "lmao");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

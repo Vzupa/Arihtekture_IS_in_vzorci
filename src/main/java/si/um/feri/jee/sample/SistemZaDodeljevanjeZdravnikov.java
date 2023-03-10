@@ -25,7 +25,6 @@ public class SistemZaDodeljevanjeZdravnikov {
             MailSender.send(zdravnik.getEmail(), "Nov pacient", "Dodeljen vam je bil nov pacient/ka, z e-naslovom: " + pacient.getEmail());
             MailSender.send(pacient.getEmail(), "Uspesna registracija k zdravniku", "Uspesno vam je bil dodeljen zdravnik, z e-naslovom " + zdravnik.getEmail() + ".");
             pacient.setZdravnik(zdravnik);
-            log.info("DODANO");
         }
         else {
             pacient.setZdravnik(nulti);
@@ -34,7 +33,6 @@ public class SistemZaDodeljevanjeZdravnikov {
                 MailSender.send(pacient.getEmail(), "Niste izbrali zdravnika", "Zdravnika niste izbrali in ste zato neopredeljeni.");
             else
                 MailSender.send(pacient.getEmail(), "Neuspesna registracija k zdravniku", "Zal je zdravnik, z e-naslovom " + zdravnik.getEmail() + ", že dosegel kvoto.");
-            log.info("NI DODANO");
         }
     }
 
