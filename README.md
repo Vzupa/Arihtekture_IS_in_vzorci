@@ -17,13 +17,9 @@ Sistem bo omogočal beleženje osebnih podatkov pacientov (ime, priimek, naslov,
 2. Možnost brisanja podatkov (dialog »ste prepričani«),
 3. Pregled števila opredeljenih pacientov po zdravnikih, paciente brez izbranega zdravnika na ločeni spletni strani.
 
-Vašo rešitev lahko opremite tudi z lepšim izgledom (npr. BootStrap) zunanjo knjižnico gradnikov (npr. PrimeFaces) ipd.
-
 ## Naloga 3: Vzorec edinec
 
 Razred(e) za hranjenje objektov (DAO) preoblikujte tako, da bo(do) skladen(ni) z vzorcem Edinec. Odločite se za ustrezno implementacijo edinca in pazite na to, da delujete v večuporabniškem okolju!
-
-Zakaj so sedaj vsi podatki hkrati vidni vsem uporabnikom vaše rešitve? Bi morali razred DAO morda prilagoditi takšnemu okolju?
 
 ## Naloga 4: Vzorec fasada, vmesni nivo, storitve aplikacijskega strežnika
 
@@ -41,4 +37,12 @@ Neposredno v spletni projekt uvedite sejna EJB zrna, ki so namenjena trajnemu hr
 
 Pri tem naj bo zrno brez stanja (@Stateless), dosegljivo lokalno (@Local). Povezavo iz uporabniškega vmesnika in eventuelno med zrni vzpostavite s pomočjo oznake @EJB.
 Tudi razred, kjer je implementirana funkcionalnost izbire osebnega zdravnika naj postane EJB, pri čemur omogočite izbiro osebnega zdravnika tudi preko (nove) konzolne aplikacije.
+
+## Naloga 6: Vzorec opazovalec
+
+Implementirajte vzorec opazovalec, da bi dosegli naslednje obveščanje pacientov:
+
+- Ko se pacientu dodeli zdravnik, naj pacient prejme e-poštno sporočilo, ki mu sporoči, kateri zdravnik je bil dodeljen.
+
+- V primeru, da je pacent že imel dodaljenega zdravnika, naj se pošlje tudi epoštno sporočilo, ki vsebuje podatek o zdravniku, ki več ni dodaljen pacientu.
 
