@@ -15,6 +15,7 @@ public class PacientMemoryDao implements PacientDao{
 
     private List<Pacient> pacienti= Collections.synchronizedList(new ArrayList<>());
 
+    //Odstranjeno, ker uporabljamo vse prek EJB-a
 //    private static  PacientMemoryDao instanca = null;
 //    public static synchronized PacientMemoryDao getInstance() {
 //        if (instanca == null)

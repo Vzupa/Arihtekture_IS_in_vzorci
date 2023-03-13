@@ -29,6 +29,11 @@ public class SistemZaDodeljevanjeZdravnikov implements SistemZaDodeljevanjeZdrav
     }
 
     @Override
+    public void najdiObjekta(String zdravnikov_mail, String pacientov_mail) {
+        preveriRazpolozljivost(zdravnikDao.find(zdravnikov_mail), pacientDao.find(pacientov_mail));
+    }
+
+    @Override
     public void preveriRazpolozljivost(Zdravnik zdravnik, Pacient pacient) {
         int steviloPacientov = this.prestejPaciente(zdravnik);
         Zdravnik nulti = zdravnikDao.find("");

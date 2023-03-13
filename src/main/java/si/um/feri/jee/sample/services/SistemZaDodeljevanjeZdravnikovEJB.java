@@ -8,6 +8,9 @@ import java.io.Serializable;
 
 @Remote
 public interface SistemZaDodeljevanjeZdravnikovEJB extends Serializable {
+
+    void najdiObjekta(String zdravnikov_email, String pacientov_email);
+
     void preveriRazpolozljivost(Zdravnik zdravnik, Pacient pacient);
 
     void test(String message);

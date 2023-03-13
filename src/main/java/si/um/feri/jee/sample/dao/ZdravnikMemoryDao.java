@@ -15,6 +15,7 @@ public class ZdravnikMemoryDao implements ZdravnikDao {
 
     private List<Zdravnik> zdravniki= Collections.synchronizedList(new ArrayList<>());
 
+    //Odstranjeno, ker uporabljamo vse prek EJB-a
 //    private static ZdravnikMemoryDao instanca = null;
 //    public static synchronized ZdravnikMemoryDao getInstance() {
 //        if (instanca == null)
