@@ -1,8 +1,9 @@
 package si.um.feri.jee.sample.jsf;
 
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import si.um.feri.jee.sample.dao.ZdravnikMemoryDao;
+import si.um.feri.jee.sample.dao.ZdravnikDao;
 import si.um.feri.jee.sample.vao.Zdravnik;
 import java.io.Serializable;
 import java.util.List;
@@ -14,7 +15,8 @@ public class ZdravnikiJSFBean implements Serializable {
 
     Logger log = Logger.getLogger(ZdravnikiJSFBean.class.toString());
 
-    private ZdravnikMemoryDao dao = ZdravnikMemoryDao.getInstance();
+    @EJB
+    private ZdravnikDao dao;
     private Zdravnik selectedZdravnik = new Zdravnik();
     private String selectedEmail;
 

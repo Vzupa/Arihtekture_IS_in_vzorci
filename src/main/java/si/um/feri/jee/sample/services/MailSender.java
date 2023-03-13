@@ -1,14 +1,10 @@
-package si.um.feri.jee.sample;
+package si.um.feri.jee.sample.services;
 
-import jakarta.annotation.Resource;
-import jakarta.ejb.Stateless;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-
 import java.util.Properties;
 
 public class MailSender {

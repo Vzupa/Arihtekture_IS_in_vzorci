@@ -1,25 +1,26 @@
 package si.um.feri.jee.sample.dao;
 
 
+import jakarta.ejb.Stateless;
 import si.um.feri.jee.sample.vao.Pacient;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class PacientMemoryDao implements BasicDao<Pacient> {
+@Stateless
+public class PacientMemoryDao implements PacientDao{
 
     Logger log= Logger.getLogger(PacientMemoryDao.class.toString());
 
     private List<Pacient> pacienti= Collections.synchronizedList(new ArrayList<>());
 
-    private PacientMemoryDao(){}
-    private static  PacientMemoryDao instanca = null;
-    public static synchronized PacientMemoryDao getInstance() {
-        if (instanca == null)
-            instanca = new PacientMemoryDao();
-        return instanca;
-    }
+//    private static  PacientMemoryDao instanca = null;
+//    public static synchronized PacientMemoryDao getInstance() {
+//        if (instanca == null)
+//            instanca = new PacientMemoryDao();
+//        return instanca;
+//    }
 
     @Override
     public List<Pacient> getAll() {

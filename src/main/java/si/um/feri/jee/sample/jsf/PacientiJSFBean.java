@@ -1,9 +1,11 @@
 package si.um.feri.jee.sample.jsf;
 
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import si.um.feri.jee.sample.SistemZaDodeljevanjeZdravnikov;
-import si.um.feri.jee.sample.dao.PacientMemoryDao;
+
+import si.um.feri.jee.sample.dao.PacientDao;
+import si.um.feri.jee.sample.services.SistemZaDodeljevanjeZdravnikov;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
@@ -17,7 +19,8 @@ public class PacientiJSFBean implements Serializable {
 
     Logger log = Logger.getLogger(PacientiJSFBean.class.toString());
 
-    private PacientMemoryDao dao = PacientMemoryDao.getInstance();
+    @EJB
+    private PacientDao dao;
     private Pacient selectedPacient = new Pacient();
     private SistemZaDodeljevanjeZdravnikov sistemZaDodeljevanjeZdravnikov = new SistemZaDodeljevanjeZdravnikov();
     private Zdravnik izbranZdravnik;
@@ -36,7 +39,8 @@ public class PacientiJSFBean implements Serializable {
         newPacient.setEmail(selectedPacient.getEmail());
         newPacient.setRojstniDatum(selectedPacient.getRojstniDatum());
         newPacient.setPosebnosti(selectedPacient.getPosebnosti());
-        sistemZaDodeljevanjeZdravnikov.preveriRazpolozljivost(izbranZdravnik, newPacient);
+//        sistemZaDodeljevanjeZdravnikov.preveriRazpolozljivost(izbranZdravnik, newPacient);
+        newPacient.setZdravnik(izbranZdravnik);
         dao.save(newPacient);
         log.info("New patient saved: " + newPacient);
         selectedPacient = new Pacient();

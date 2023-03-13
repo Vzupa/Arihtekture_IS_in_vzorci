@@ -6,10 +6,10 @@ import java.util.*;
 import java.util.logging.Logger;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import si.um.feri.jee.sample.dao.PacientMemoryDao;
-import si.um.feri.jee.sample.dao.ZdravnikMemoryDao;
+import si.um.feri.jee.sample.dao.*;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
@@ -19,9 +19,11 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 
 	Logger log = Logger.getLogger(opredeljeniPacientiJSFBean.class.toString());
 
-	private PacientMemoryDao pacientDao = PacientMemoryDao.getInstance();
+	@EJB
+	private PacientDao pacientDao;
 
-	private ZdravnikMemoryDao zdravnikDao = ZdravnikMemoryDao.getInstance();
+	@EJB
+	private ZdravnikDao zdravnikDao;
 
 	private Integer neopredeljeni;
 
