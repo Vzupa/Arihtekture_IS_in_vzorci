@@ -39,8 +39,8 @@ public class PacientiJSFBean implements Serializable {
         newPacient.setEmail(selectedPacient.getEmail());
         newPacient.setRojstniDatum(selectedPacient.getRojstniDatum());
         newPacient.setPosebnosti(selectedPacient.getPosebnosti());
-//        sistemZaDodeljevanjeZdravnikov.preveriRazpolozljivost(izbranZdravnik, newPacient);
-        newPacient.setZdravnik(izbranZdravnik);
+        sistemZaDodeljevanjeZdravnikov.preveriRazpolozljivost(izbranZdravnik, newPacient);
+//        newPacient.setZdravnik(izbranZdravnik);
         dao.save(newPacient);
         log.info("New patient saved: " + newPacient);
         selectedPacient = new Pacient();
