@@ -94,7 +94,6 @@ public class opredeljeniPacientiJSFBean implements Serializable {
 		pacientDao.save(enaP4);
 		pacientDao.save(stiriP2);
 		pacientDao.save(stiriP3);
-
 	}
 
 	public Integer getNeopredeljeni() {

@@ -3,6 +3,8 @@ package si.um.feri.jee.sample.dao;
 
 import jakarta.ejb.Stateless;
 import si.um.feri.jee.sample.vao.Pacient;
+import si.um.feri.jee.sample.vao.Zdravnik;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,5 +61,19 @@ public class PacientMemoryDao implements PacientDao{
 
         if(zaDelete != null)
             pacienti.remove(zaDelete);
+    }
+
+    @Override
+    public int getSteviloPacientov(Zdravnik zdravnik){
+        List<Pacient> pacienti = getAll();
+
+        int steviloPacientov = 0;
+
+        for (Pacient pacient : pacienti){
+            if (pacient.getZdravnik().getEmail().equals(zdravnik.getEmail()))
+                steviloPacientov++;
+        }
+
+        return steviloPacientov;
     }
 }

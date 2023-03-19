@@ -11,4 +11,5 @@ public interface ZdravnikDao {
     Zdravnik find(String email);
     void save(Zdravnik zdravnik);
     void delete(String email);
+    boolean preveriRazpolozljiost(Zdravnik zdravnik, int steviloPacientov);
 }

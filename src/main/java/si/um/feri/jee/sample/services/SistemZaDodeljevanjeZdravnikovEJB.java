@@ -11,7 +11,7 @@ public interface SistemZaDodeljevanjeZdravnikovEJB extends Serializable {
 
     void najdiObjekta(String zdravnikov_email, String pacientov_email);
 
-    void preveriRazpolozljivost(Zdravnik zdravnik, Pacient pacient);
+    Pacient preveriRazpolozljivost(Zdravnik zdravnik, Pacient pacient, Zdravnik stariZdravnik);
 
     void test(String message);
 }

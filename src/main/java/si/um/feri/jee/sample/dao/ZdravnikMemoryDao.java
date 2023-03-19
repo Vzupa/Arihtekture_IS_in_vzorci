@@ -60,4 +60,9 @@ public class ZdravnikMemoryDao implements ZdravnikDao {
         if(zaDelete != null)
             zdravniki.remove(zaDelete);
     }
+
+    @Override
+    public boolean preveriRazpolozljiost(Zdravnik zdravnik, int steviloPacientov){
+        return steviloPacientov < zdravnik.getKvota();
+    }
 }

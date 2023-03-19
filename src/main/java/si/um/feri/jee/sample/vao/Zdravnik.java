@@ -1,8 +1,8 @@
 package si.um.feri.jee.sample.vao;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Zdravnik {
+public class Zdravnik implements Serializable {
 
     private String ime;
     private String priimek;
@@ -54,8 +54,6 @@ public class Zdravnik {
 
     @Override
     public String toString() {
-        String zaNazaj = this.ime + " " + this.priimek + ", " + this.email;
-
-        return zaNazaj;
+        return this.ime + " " + this.priimek + ", " + this.email;
     }
 }
