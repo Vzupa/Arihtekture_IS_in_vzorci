@@ -46,3 +46,7 @@ Implementirajte vzorec opazovalec, da bi dosegli naslednje obveščanje paciento
 
 - V primeru, da je pacent že imel dodaljenega zdravnika, naj se pošlje tudi epoštno sporočilo, ki vsebuje podatek o zdravniku, ki več ni dodaljen pacientu.
 
+## Naloga 7: Objektno-relacijsko preslikovanje - entitetna zrna
+
+V projektu lastno implementacijo (in-memory) DAO razredov nadomestite z uporabo knjižnice JPA.
+
