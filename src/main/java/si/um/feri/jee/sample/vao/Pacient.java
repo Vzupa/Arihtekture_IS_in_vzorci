@@ -51,23 +51,22 @@ public class Pacient implements Serializable {
 
 
     private void obestiDodajanjeZdravnika(Zdravnik noviZdravnik) {
-        System.out.println(Arrays.toString(this.opazovalci.toArray()));
         for (OpazovalecInterface opazovalec : this.opazovalci) {
             opazovalec.obvestiNovo(this, noviZdravnik);
         }
     }
 
     private void obestiOdstranjevanjeZdravnika(Zdravnik stariZdravnik) {
-        System.out.println(Arrays.toString(this.opazovalci.toArray()));
         for (OpazovalecInterface opazovalec : this.opazovalci) {
             opazovalec.obvestiStaro(this, stariZdravnik);
         }
     }
 
     public void setZdravnik(Zdravnik noviZdravnik, Zdravnik stariZdravnik) {
-        //star zdravnik more bit, ker se ponavadi kliče iz newPacient, kateremu še ni bil dodeljen zdravnik
-        if (!Objects.equals(stariZdravnik.getEmail(), "")) {
-            this.obestiOdstranjevanjeZdravnika(stariZdravnik);
+        //star zdravnik more bit, ker se ponavadi kliče iz new Pacient, kateremu še ni bil dodeljen zdravnik
+        if (stariZdravnik != null) {
+            if(!Objects.equals(stariZdravnik.getEmail(), ""))
+                this.obestiOdstranjevanjeZdravnika(stariZdravnik);
         }
         this.obestiDodajanjeZdravnika(noviZdravnik);
         this.zdravnik = noviZdravnik;
