@@ -66,8 +66,10 @@ public class Pacient implements Serializable {
 
     public void setZdravnik(Zdravnik noviZdravnik, Zdravnik stariZdravnik) {
         //star zdravnik more bit, ker se ponavadi kliče iz newPacient, kateremu še ni bil dodeljen zdravnik
-        if (!Objects.equals(stariZdravnik.getEmail(), "")) {
-            this.obestiOdstranjevanjeZdravnika(stariZdravnik);
+        if (stariZdravnik != null) {
+            if (!Objects.equals(stariZdravnik.getEmail(), "")) {
+                this.obestiOdstranjevanjeZdravnika(stariZdravnik);
+            }
         }
         this.obestiDodajanjeZdravnika(noviZdravnik);
         this.zdravnik = noviZdravnik;

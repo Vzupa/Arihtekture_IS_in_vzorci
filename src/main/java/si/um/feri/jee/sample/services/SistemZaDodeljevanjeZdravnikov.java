@@ -38,7 +38,6 @@ public class SistemZaDodeljevanjeZdravnikov implements SistemZaDodeljevanjeZdrav
     public Pacient preveriRazpolozljivost(Zdravnik zdravnik, Pacient pacient, Zdravnik starZdravnik) {
         int steviloPacientov = pacientDao.getSteviloPacientov(zdravnik);
         Zdravnik nulti = zdravnikDao.find("");
-        log.info("starZdravnik: " + starZdravnik.getEmail());
 
         if (zdravnik.getKvota() > steviloPacientov) {
             MailSender.send(zdravnik.getEmail(), "Nov pacient", "Dodeljen vam je bil nov pacient/ka, z e-naslovom: " + pacient.getEmail());

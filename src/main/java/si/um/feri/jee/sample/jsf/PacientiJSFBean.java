@@ -41,10 +41,14 @@ public class PacientiJSFBean implements Serializable {
         newPacient.setRojstniDatum(selectedPacient.getRojstniDatum());
         newPacient.setPosebnosti(selectedPacient.getPosebnosti());
         Pacient starPacient = dao.find(selectedPacient.getEmail());
+
         //newPacient se nia zdravnika, zato najdem prek prejsnega pa poslem not, pa returnat morem newPacient, ker se mi ni hoto updejtat
-        Zdravnik starZdravnik = starPacient.getZdravnik();
+        Zdravnik starZdravnik = null;
+        if (starPacient != null){
+            starZdravnik = starPacient.getZdravnik();
+        }
         newPacient = sistemZaDodeljevanjeZdravnikov.preveriRazpolozljivost(izbranZdravnik, newPacient, starZdravnik);
-        log.info(selectedPacient.getZdravnik().toString());
+
         dao.save(newPacient);
         log.info("New patient saved: " + newPacient);
         selectedPacient = new Pacient();
