@@ -1,5 +1,6 @@
 package si.um.feri.jee.sample.vao;
 
+import jakarta.persistence.*;
 import si.um.feri.jee.sample.services.Opazovalec;
 import si.um.feri.jee.sample.services.OpazovalecInterface;
 
@@ -10,14 +11,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Pacient implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     private String ime;
     private String priimek;
     private String email;
     private LocalDate rojstniDatum;
     private String posebnosti;
+    @ManyToOne
     private Zdravnik zdravnik;
+    @Transient
     private List<OpazovalecInterface> opazovalci;
 
 

@@ -2,6 +2,8 @@ package si.um.feri.jee.sample.dao;
 
 
 import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
@@ -13,9 +15,12 @@ import java.util.logging.Logger;
 @Stateless
 public class PacientMemoryDao implements PacientDao{
 
+    @PersistenceContext
+    EntityManager em;
     Logger log= Logger.getLogger(PacientMemoryDao.class.toString());
 
-    private List<Pacient> pacienti= Collections.synchronizedList(new ArrayList<>());
+    //Odstranjeno, ker smo se povezali na bazo
+//    private List<Pacient> pacienti= Collections.synchronizedList(new ArrayList<>());
 
     //Odstranjeno, ker uporabljamo vse prek EJB-a
 //    private static  PacientMemoryDao instanca = null;
@@ -28,16 +33,19 @@ public class PacientMemoryDao implements PacientDao{
     @Override
     public List<Pacient> getAll() {
         log.info("DAO pacienti: get all");
-        return pacienti;
+        return em.createQuery("select p from Pacient p", Pacient.class).getResultList();
     }
 
     @Override
     public Pacient find(String email)  {
         log.info("DAO pacienti: finding "+email);
-        for (Pacient o : pacienti)
-            if (o.getEmail().equals(email))
-                return o;
-        return null;
+        try {
+            Pacient pacient = em.createQuery("select p from Pacient p where p.email = :email", Pacient.class)
+                    .setParameter("email", email).getSingleResult();
+            return pacient;
+        } catch (Exception e){
+            return null;
+        }
     }
 
     @Override
@@ -45,22 +53,20 @@ public class PacientMemoryDao implements PacientDao{
         log.info("DAO: saving "+o);
         if(find(o.getEmail())!=null) {
             log.info("DAO: editing "+o);
-            delete(o.getEmail());
+            em.merge(o);
         }
-        pacienti.add(o);
+        else {
+            em.persist(o);
+        }
     }
 
     @Override
     public void delete(String email){
         log.info("Deleting: " + email);
-        Pacient zaDelete = null;
-        for (Pacient pacient : pacienti){
-            if(pacient.getEmail().equals(email))
-                zaDelete = pacient;
-        }
+        Pacient zaDelete = find(email);
 
         if(zaDelete != null)
-            pacienti.remove(zaDelete);
+            em.remove(zaDelete);
     }
 
     @Override
