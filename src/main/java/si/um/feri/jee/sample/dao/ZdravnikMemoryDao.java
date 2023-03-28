@@ -38,6 +38,8 @@ public class ZdravnikMemoryDao implements ZdravnikDao {
     @Override
     public Zdravnik find(String email)  {
         log.info("DAO zdravniki: finding "+email);
+        if(email==null)
+            email = "";
         try{
             Zdravnik zdravnik = em.createQuery("select z from Zdravnik z where z.email = :email", Zdravnik.class)
                     .setParameter("email", email).getSingleResult();

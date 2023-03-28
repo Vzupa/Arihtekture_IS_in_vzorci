@@ -5,6 +5,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
 import si.um.feri.jee.sample.dao.PacientDao;
+import si.um.feri.jee.sample.dao.ZdravnikDao;
 import si.um.feri.jee.sample.services.SistemZaDodeljevanjeZdravnikovEJB;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
@@ -21,27 +22,22 @@ public class PacientiJSFBean implements Serializable {
 
     @EJB
     private PacientDao dao;
+    @EJB
+    private ZdravnikDao zdravnikDao;
     private Pacient selectedPacient = new Pacient();
     @EJB
     private SistemZaDodeljevanjeZdravnikovEJB sistemZaDodeljevanjeZdravnikov;
-    private Zdravnik izbranZdravnik;
     private String selectedEmail;
+    private String selectedZdravnikEmail;
 
-
-    public List<Pacient> getAllPacienti() throws Exception {
-        this.selectedPacient = new Pacient();
-        return dao.getAll();
-    }
 
     public String savePacient() throws Exception {
-        log.info("klice se");
         Pacient newPacient = new Pacient();
         newPacient.setIme(selectedPacient.getIme());
         newPacient.setPriimek(selectedPacient.getPriimek());
         newPacient.setEmail(selectedPacient.getEmail());
         newPacient.setRojstniDatum(selectedPacient.getRojstniDatum());
         newPacient.setPosebnosti(selectedPacient.getPosebnosti());
-        log.info("naredo novega");
 
         //newPacient se nia zdravnika, zato najdem prek prejsnega pa poslem not, pa returnat morem newPacient, ker se mi ni hoto updejtat
         Pacient starPacient = dao.find(selectedPacient.getEmail());
@@ -49,6 +45,10 @@ public class PacientiJSFBean implements Serializable {
         if (starPacient != null) {
             starZdravnik = starPacient.getZdravnik();
         }
+
+        Zdravnik izbranZdravnik = zdravnikDao.find(selectedZdravnikEmail);
+        log.info("email:" + selectedZdravnikEmail);
+        log.info("izbran zdravnik: " + izbranZdravnik.toString());
         newPacient = sistemZaDodeljevanjeZdravnikov.preveriRazpolozljivost(izbranZdravnik, newPacient, starZdravnik);
 
         log.info("dodal zdravnika");
@@ -89,17 +89,21 @@ public class PacientiJSFBean implements Serializable {
         this.selectedPacient = selectedPacient;
     }
 
-    public Zdravnik getIzbranZdravnik() {
-        return izbranZdravnik;
+    public void spremeniZdravnika(String  zdravnikovMail){
+        this.selectedZdravnikEmail = zdravnikovMail;
     }
 
-    public void setIzbranZdravnik(Zdravnik izbranZdravnik) {
-        log.info("izbran zdravnik: " + izbranZdravnik.getEmail());
-        this.izbranZdravnik = izbranZdravnik;
+    public List<Pacient> getAllPacienti() throws Exception {
+        this.selectedPacient = new Pacient();
+        return dao.getAll();
     }
 
-    public void spremeniZdravnika(Zdravnik zdravnik){
-        this.izbranZdravnik = zdravnik;
+    public String getSelectedZdravnikEmail() {
+        return selectedZdravnikEmail;
+    }
+
+    public void setSelectedZdravnikEmail(String selectedZdravnikEmail) {
+        this.selectedZdravnikEmail = selectedZdravnikEmail;
     }
 
 }

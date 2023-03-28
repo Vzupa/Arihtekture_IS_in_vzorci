@@ -79,8 +79,8 @@
         <div class="form-group row">
             <label for="zdravniki" class="col-sm-2 col-form-label">Zdravnik:</label>
             <div class="col-sm-10">
-                <h:selectOneMenu id="zdravniki" value="#{pacientBean.izbranZdravnik}" converter="si.um.feri.jee.sample.converter.ZdravnikConverter">
-                    <f:selectItems value="#{zdravnikBean.allZdravniki}" var="zdravnikec" itemValue="#{zdravnikec}" />
+                <h:selectOneMenu id="zdravniki" value="#{pacientBean.selectedZdravnikEmail}">
+                    <f:selectItems value="#{zdravnikBean.pridobiEnaslove()}" />
                 </h:selectOneMenu>
             </div>
         </div>

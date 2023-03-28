@@ -6,6 +6,7 @@ import jakarta.inject.Named;
 import si.um.feri.jee.sample.dao.ZdravnikDao;
 import si.um.feri.jee.sample.vao.Zdravnik;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -24,6 +25,17 @@ public class ZdravnikiJSFBean implements Serializable {
     public List<Zdravnik> getAllZdravniki() throws Exception {
         this.selectedZdravnik = new Zdravnik();
         return dao.getAll();
+    }
+
+    public List<String> pridobiEnaslove(){
+        List<Zdravnik> zdravniki = dao.getAll();
+        List<String> emaili = new ArrayList<>();
+
+        for (Zdravnik zdravnik : zdravniki){
+            emaili.add(zdravnik.getEmail());
+        }
+
+        return emaili;
     }
 
     public String saveZdravnik() throws Exception {
