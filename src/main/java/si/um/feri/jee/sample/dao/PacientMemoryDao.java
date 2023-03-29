@@ -4,6 +4,8 @@ package si.um.feri.jee.sample.dao;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import si.um.feri.jee.sample.strategija.ObiskProcesor;
+import si.um.feri.jee.sample.vao.Obisk;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
@@ -36,7 +38,7 @@ public class PacientMemoryDao implements PacientDao{
 
     @Override
     public Pacient find(String email)  {
-        log.info("DAO pacienti: finding "+email);
+        log.info("DAO pacienti: finding " + email);
         try {
             return em.createQuery("select p from Pacient p where p.email = :email", Pacient.class)
                     .setParameter("email", email).getSingleResult();
@@ -47,7 +49,6 @@ public class PacientMemoryDao implements PacientDao{
 
     @Override
     public void save(Pacient o)  {
-        log.info("DAO: saving "+o);
         Pacient pacient = find(o.getEmail());
 
         if(pacient != null) {
@@ -56,6 +57,7 @@ public class PacientMemoryDao implements PacientDao{
             em.persist(o);
         }
         else {
+            log.info("DAO: saving " + o);
             em.persist(o);
         }
     }
@@ -81,5 +83,14 @@ public class PacientMemoryDao implements PacientDao{
         }
 
         return steviloPacientov;
+    }
+
+    @Override
+    public void shraniObisk(String email, Obisk obisk) {
+        Pacient pacient = find(email);
+        pacient.dodajObisk(obisk);
+        ObiskProcesor obiskProcesor = new ObiskProcesor(obisk);
+        obiskProcesor.zakljuciObisk(email);
+        save(pacient);
     }
 }

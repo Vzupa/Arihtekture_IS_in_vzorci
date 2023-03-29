@@ -1,6 +1,7 @@
 package si.um.feri.jee.sample.dao;
 
 import jakarta.ejb.Local;
+import si.um.feri.jee.sample.vao.Obisk;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
@@ -13,4 +14,6 @@ public interface PacientDao {
     void save(Pacient pacient);
     void delete(String email);
     int getSteviloPacientov(Zdravnik zdravnik);
+
+    void shraniObisk(String email, Obisk obisk);
 }

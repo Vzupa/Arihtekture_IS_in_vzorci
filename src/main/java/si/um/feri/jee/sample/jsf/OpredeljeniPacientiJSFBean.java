@@ -15,9 +15,9 @@ import si.um.feri.jee.sample.vao.Zdravnik;
 
 @Named("opredeljeniBean")
 @SessionScoped
-public class opredeljeniPacientiJSFBean implements Serializable {
+public class OpredeljeniPacientiJSFBean implements Serializable {
 
-	Logger log = Logger.getLogger(opredeljeniPacientiJSFBean.class.toString());
+	Logger log = Logger.getLogger(OpredeljeniPacientiJSFBean.class.toString());
 
 	@EJB
 	private PacientDao pacientDao;

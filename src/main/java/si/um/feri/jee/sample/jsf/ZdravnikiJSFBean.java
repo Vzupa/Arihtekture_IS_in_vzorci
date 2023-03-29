@@ -21,7 +21,6 @@ public class ZdravnikiJSFBean implements Serializable {
     private Zdravnik selectedZdravnik = new Zdravnik();
     private String selectedEmail;
 
-
     public List<Zdravnik> getAllZdravniki() throws Exception {
         this.selectedZdravnik = new Zdravnik();
         return dao.getAll();

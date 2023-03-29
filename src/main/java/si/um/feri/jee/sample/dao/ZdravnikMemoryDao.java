@@ -5,8 +5,6 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import si.um.feri.jee.sample.vao.Zdravnik;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -41,9 +39,8 @@ public class ZdravnikMemoryDao implements ZdravnikDao {
         if(email==null)
             email = "";
         try{
-            Zdravnik zdravnik = em.createQuery("select z from Zdravnik z where z.email = :email", Zdravnik.class)
+            return em.createQuery("select z from Zdravnik z where z.email = :email", Zdravnik.class)
                     .setParameter("email", email).getSingleResult();
-            return zdravnik;
         } catch (Exception e){
             return null;
         }
@@ -51,12 +48,15 @@ public class ZdravnikMemoryDao implements ZdravnikDao {
 
     @Override
     public void save(Zdravnik o)  {
-        if(find(o.getEmail())!=null) {
-            log.info("DAO: editing "+o);
-            em.merge(o);
+        Zdravnik zdravnik = find(o.getEmail());
+
+        if(zdravnik != null) {
+            log.info("DAO: editing " + o);
+            em.remove(zdravnik);
+            em.persist(o);
         }
         else {
-            log.info("DAO: creating "+o);
+            log.info("DAO: creating " + o);
             em.persist(o);
         }
     }

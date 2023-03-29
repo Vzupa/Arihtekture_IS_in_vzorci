@@ -5,12 +5,12 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
 import si.um.feri.jee.sample.dao.PacientDao;
-import si.um.feri.jee.sample.dao.ZdravnikDao;
 import si.um.feri.jee.sample.services.SistemZaDodeljevanjeZdravnikovEJB;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -51,6 +51,17 @@ public class PacientiJSFBean implements Serializable {
         log.info("New patient saved: " + newPacient);
         selectedPacient = new Pacient();
         return "all";
+    }
+
+    public List<String> pridobiEnaslove() {
+        List<Pacient> pacienti = dao.getAll();
+        List<String> emaili = new ArrayList<>();
+
+        for(Pacient pacient : pacienti) {
+            emaili.add(pacient.getEmail());
+        }
+
+        return emaili;
     }
 
     public Pacient getNewPacient() {

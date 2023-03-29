@@ -7,7 +7,6 @@ import si.um.feri.jee.sample.services.OpazovalecInterface;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,7 +16,6 @@ public class Pacient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     private String ime;
     private String priimek;
     private String email;
@@ -27,6 +25,8 @@ public class Pacient implements Serializable {
     private Zdravnik zdravnik;
     @Transient
     private List<OpazovalecInterface> opazovalci;
+    @OneToMany
+    private List<Obisk> obiski;
 
 
     public Pacient() {
@@ -47,6 +47,7 @@ public class Pacient implements Serializable {
         this.zdravnik = null;
         this.opazovalci = new ArrayList<>();
         this.dodajOpazovalca(new Opazovalec());
+        this.obiski = new ArrayList<>();
     }
 
     public void dodajOpazovalca(OpazovalecInterface opazovalec) {
@@ -80,6 +81,9 @@ public class Pacient implements Serializable {
         this.zdravnik = noviZdravnik;
     }
 
+    public void dodajObisk(Obisk obisk) {
+        this.obiski.add(obisk);
+    }
 
     public String getIme() {
         return ime;
@@ -131,6 +135,14 @@ public class Pacient implements Serializable {
 
     public void setOpazovalci(List<OpazovalecInterface> opazovalci) {
         this.opazovalci = opazovalci;
+    }
+
+    public List<Obisk> getObiski() {
+        return obiski;
+    }
+
+    public void setObiski(List<Obisk> obiski) {
+        this.obiski = obiski;
     }
 
     @Override
