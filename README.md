@@ -50,3 +50,15 @@ Implementirajte vzorec opazovalec, da bi dosegli naslednje obveščanje paciento
 
 V projektu lastno implementacijo (in-memory) DAO razredov nadomestite z uporabo knjižnice JPA.
 
+## Naloga 8: Vzorec strategija
+
+Aplikaciji dodajte možnost beleženja pacientovih obiskov pri zdravniku (zdravnik, datum in čas, posebnosti, predpisana zdravila). Upoštevajte vse dobre prakse razvoja (ločevanje VAO, DAO, uporabniškega vmesnika ipd.)
+
+Podatek o obisku je možno urejati dokler obisk ni zaključen (gumb "zaključi") pri pregledu podatkov o obisku. Ob zaključku obiska pa poskrbite za naslednje:
+
+- v kolikor zdravnik ni vnesel nobene posebnosti, ne naredite nič,
+- v kolikor je zdravnik vnesel posebnosti, naj se pošlje e-poštno sporočilo pacientu s podatki,
+- v kolikor je zdravnik predpisal kakšna zdravila, naj se pošlje tudi e-poštno sporočilo o zdravilih.
+
+Zgornje obnašanje implementirajte s pomočjo vzorca "strategija".
+
