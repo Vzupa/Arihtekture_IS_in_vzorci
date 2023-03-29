@@ -22,8 +22,6 @@ public class PacientiJSFBean implements Serializable {
 
     @EJB
     private PacientDao dao;
-    @EJB
-    private ZdravnikDao zdravnikDao;
     private Pacient selectedPacient = new Pacient();
     @EJB
     private SistemZaDodeljevanjeZdravnikovEJB sistemZaDodeljevanjeZdravnikov;
@@ -46,10 +44,7 @@ public class PacientiJSFBean implements Serializable {
             starZdravnik = starPacient.getZdravnik();
         }
 
-        Zdravnik izbranZdravnik = zdravnikDao.find(selectedZdravnikEmail);
-        log.info("email:" + selectedZdravnikEmail);
-        log.info("izbran zdravnik: " + izbranZdravnik.toString());
-        newPacient = sistemZaDodeljevanjeZdravnikov.preveriRazpolozljivost(izbranZdravnik, newPacient, starZdravnik);
+        newPacient = sistemZaDodeljevanjeZdravnikov.najdiObjekt(selectedZdravnikEmail, newPacient, starZdravnik);
 
         log.info("dodal zdravnika");
         dao.save(newPacient);

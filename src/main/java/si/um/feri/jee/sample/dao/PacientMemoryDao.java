@@ -7,8 +7,6 @@ import jakarta.persistence.PersistenceContext;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -40,9 +38,8 @@ public class PacientMemoryDao implements PacientDao{
     public Pacient find(String email)  {
         log.info("DAO pacienti: finding "+email);
         try {
-            Pacient pacient = em.createQuery("select p from Pacient p where p.email = :email", Pacient.class)
+            return em.createQuery("select p from Pacient p where p.email = :email", Pacient.class)
                     .setParameter("email", email).getSingleResult();
-            return pacient;
         } catch (Exception e){
             return null;
         }

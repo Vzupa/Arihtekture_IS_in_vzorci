@@ -55,4 +55,10 @@ public class SistemZaDodeljevanjeZdravnikov implements SistemZaDodeljevanjeZdrav
         return pacient;
     }
 
+    @Override
+    public Pacient najdiObjekt(String zdravnikovMail, Pacient pacient, Zdravnik starZdravnik){
+        // Vmesni, ker sem spremenil iz zdravnika v PacientBeanu v samo njegov mail
+        return preveriRazpolozljivost(zdravnikDao.find(zdravnikovMail), pacient, starZdravnik);
+    }
+
 }
