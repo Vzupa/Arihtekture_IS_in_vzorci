@@ -89,8 +89,7 @@ public class PacientMemoryDao implements PacientDao{
     public void shraniObisk(String email, Obisk obisk) {
         Pacient pacient = find(email);
         pacient.dodajObisk(obisk);
-        ObiskProcesor obiskProcesor = new ObiskProcesor(obisk);
-        obiskProcesor.zakljuciObisk(email);
+        new ObiskProcesor(obisk).zakljuciObisk(email);
         save(pacient);
     }
 }
