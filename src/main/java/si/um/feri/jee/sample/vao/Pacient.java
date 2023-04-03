@@ -1,6 +1,7 @@
 package si.um.feri.jee.sample.vao;
 
 import jakarta.persistence.*;
+import org.primefaces.shaded.json.JSONPropertyIgnore;
 import si.um.feri.jee.sample.services.Opazovalec;
 import si.um.feri.jee.sample.services.OpazovalecInterface;
 
@@ -24,9 +25,9 @@ public class Pacient implements Serializable {
     @ManyToOne
     private Zdravnik zdravnik;
     @Transient
-    private List<OpazovalecInterface> opazovalci;
+    private transient List<OpazovalecInterface> opazovalci;
     @OneToMany
-    private List<Obisk> obiski;
+    private transient List<Obisk> obiski; //dodal transient, ker mi Serializable javlja napako
 
 
     public Pacient() {

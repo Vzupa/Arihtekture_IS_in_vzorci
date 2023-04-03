@@ -2,10 +2,11 @@ package si.um.feri.jee.sample.vao;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-public class Obisk {
+public class Obisk implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
