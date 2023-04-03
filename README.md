@@ -62,3 +62,16 @@ Podatek o obisku je možno urejati dokler obisk ni zaključen (gumb "zaključi")
 
 Zgornje obnašanje implementirajte s pomočjo vzorca "strategija".
 
+## Naloga 9: Rest spletne storitve
+
+Nekatere funkcionalnosti vaše rešitve boste izpostavili preko REST vmesnika: pregled in dodajanje pacientov ter izbiro zdravnika.
+
+V ta namen razvijte REST spletno storitev (spletne storitve), in zunanjo (CLI) aplikacijo kot odjemalce storitve.
+
+Storitev izdelajte s pomočjo standardnega APIja JAX-RS. Omogočite komunikacijo s podatkovnim formatom JSON.
+
+## Naloga 10: Spletna aplikacija tipa SPA - React
+
+Na osnovi pripravljenega REST vmesnika razvijte enostransko spletno aplikacijo s pomočjo knjižnice React.
+
+Aplikacija naj pacientu omogoča pregled vseh zdravnikov, ki so na voljo; ter izbor novega izbranega zdravnika.
