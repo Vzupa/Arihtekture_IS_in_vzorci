@@ -14,9 +14,11 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import si.um.feri.jee.sample.dao.PacientDao;
+import si.um.feri.jee.sample.dao.ZdravnikDao;
 import si.um.feri.jee.sample.services.SistemZaDodeljevanjeZdravnikovEJB;
 import si.um.feri.jee.sample.strategija.ObiskProcesor;
 import si.um.feri.jee.sample.vao.Pacient;
+import si.um.feri.jee.sample.vao.Zdravnik;
 
 import java.util.Collection;
 import java.util.logging.Logger;
@@ -26,7 +28,6 @@ import java.util.logging.Logger;
 @Consumes(MediaType.APPLICATION_JSON)
 public class PacientResource {
     Logger log = Logger.getLogger(PacientResource.class.toString());
-
 
     @EJB
     private PacientDao pacientDao;

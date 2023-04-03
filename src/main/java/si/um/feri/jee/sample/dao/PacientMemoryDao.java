@@ -72,14 +72,19 @@ public class PacientMemoryDao implements PacientDao{
     }
 
     @Override
-    public int getSteviloPacientov(Zdravnik zdravnik){
+    public int getSteviloPacientov(Zdravnik zdravnik, Zdravnik nulti){
         List<Pacient> pacienti = getAll();
+        log.info("zdravnik: " + zdravnik);
 
         int steviloPacientov = 0;
 
         for (Pacient pacient : pacienti){
-            if (pacient.getZdravnik().getEmail().equals(zdravnik.getEmail()))
-                steviloPacientov++;
+            try {
+                if (pacient.getZdravnik().getEmail().equals(zdravnik.getEmail()))
+                    steviloPacientov++;
+            } catch (Exception e){
+                log.info("Pacient nima zdravnika");
+            }
         }
 
         return steviloPacientov;

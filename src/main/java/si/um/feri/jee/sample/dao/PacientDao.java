@@ -13,7 +13,7 @@ public interface PacientDao {
     Pacient find(String email);
     void save(Pacient pacient);
     void delete(String email);
-    int getSteviloPacientov(Zdravnik zdravnik);
+    int getSteviloPacientov(Zdravnik zdravnik, Zdravnik nulti);
 
     void shraniObisk(String email, Obisk obisk);
 }
