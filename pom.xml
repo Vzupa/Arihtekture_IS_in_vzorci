@@ -27,6 +27,12 @@
 			<artifactId>omnifaces</artifactId>
 			<version>4.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>swagger-ui</artifactId>
+			<version>4.18.2</version>
+		</dependency>
 	</dependencies>
 	
 	<build>

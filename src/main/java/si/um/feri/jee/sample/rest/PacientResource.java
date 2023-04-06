@@ -15,12 +15,15 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import si.um.feri.jee.sample.dao.PacientDao;
 import si.um.feri.jee.sample.dao.ZdravnikDao;
+import si.um.feri.jee.sample.dto.PacientDto;
 import si.um.feri.jee.sample.services.SistemZaDodeljevanjeZdravnikovEJB;
 import si.um.feri.jee.sample.strategija.ObiskProcesor;
 import si.um.feri.jee.sample.vao.Pacient;
 import si.um.feri.jee.sample.vao.Zdravnik;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Path("/pacienti")
@@ -36,14 +39,20 @@ public class PacientResource {
     private SistemZaDodeljevanjeZdravnikovEJB sistemZaDodeljevanjeZdravnikovEJB;
 
     @GET
-    public Collection<Pacient> getVsiPacienti() {
-        return pacientDao.getAll();
+    public Collection<PacientDto> getVsiPacienti() {
+        List<PacientDto> pacienti = new ArrayList<>();
+
+        pacientDao.getAll().forEach(pacient -> {
+            pacienti.add(new PacientDto(pacient));
+        });
+
+        return pacienti;
     }
 
     @GET
     @Path("/{email}")
-    public Pacient getPacient(@PathParam("email") String email) {
-        return pacientDao.find(email);
+    public PacientDto getPacient(@PathParam("email") String email) {
+        return new PacientDto(pacientDao.find(email));
     }
 
     @POST

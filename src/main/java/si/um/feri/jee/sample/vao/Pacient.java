@@ -27,7 +27,7 @@ public class Pacient implements Serializable {
     @Transient
     private transient List<OpazovalecInterface> opazovalci;
     @OneToMany
-    private transient List<Obisk> obiski; //dodal transient, ker mi Serializable javlja napako
+    private List<Obisk> obiski;
 
 
     public Pacient() {
