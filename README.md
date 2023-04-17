@@ -75,3 +75,9 @@ Storitev izdelajte s pomočjo standardnega APIja JAX-RS. Omogočite komunikacijo
 Na osnovi pripravljenega REST vmesnika razvijte enostransko spletno aplikacijo s pomočjo knjižnice React.
 
 Aplikacija naj pacientu omogoča pregled vseh zdravnikov, ki so na voljo; ter izbor novega izbranega zdravnika.
+
+## Naloga 11: Izmenjava sporočil - sporočilno gnana zrna
+
+Funkcionalnost izbire zdravnika boste izpostavili na asihron način preko sporočilno gnanega zrna.
+
+V ta namen razvijte sporočilno gnano zrno, ki so sprožilo izbiro. Izbiro zdravnika izvedite z zunanjo (CLI) aplikacijo, s pomočjo katere lahko uporabnik vpiše identifikator (email) zdravnika, identifikator pacienta (email), ter to pošljete preko sporočila zalednemu sistemu.
